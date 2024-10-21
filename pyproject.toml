@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "learning-project"
+version = "0.1.0"
+description = "this is a learning project"
+authors = ["Ishan Kumar <ishan1701@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+google-cloud-storage = "^2.18.2"
+requests = "^2.32.3"
+pendulum = "^3.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

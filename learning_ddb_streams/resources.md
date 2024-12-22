@@ -1,0 +1,1 @@
+https://www.alexdebrie.com/bites/dynamodb-streams/#:~:text=DynamoDB%20wants%20you%20to%20use,when%20using%20enhanced%20fan%2Dout

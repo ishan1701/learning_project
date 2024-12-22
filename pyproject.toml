@@ -10,6 +10,9 @@ python = "^3.10"
 google-cloud-storage = "^2.18.2"
 requests = "^2.32.3"
 pendulum = "^3.0.0"
+kagglehub = "^0.3.5"
+kaggle = "^1.6.17"
+PyYAML = "^6.0.2"
 
 
 [build-system]

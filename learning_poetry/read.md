@@ -51,4 +51,9 @@
     Using virtualenv: /Users/ishan.kumar/PycharmProjects/learning_project/.venv
 13. poetry install
     Installing dependencies from lock file
-
+14. sometimes while installing packages below error can come
+    ```poetry install ```
+    ```Installing dependencies from lock file```
+    ```pyproject.toml changed significantly since poetry.lock was last generated. Run `poetry lock [--no-update]` to fix the lock file.```
+run the below command to solve it
+```poetry lock --no-update```

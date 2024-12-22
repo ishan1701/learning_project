@@ -1,0 +1,1 @@
+https://www.tinybird.co/blog-posts/real-time-anomaly-detection

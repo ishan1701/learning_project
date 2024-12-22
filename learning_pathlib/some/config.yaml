@@ -1,9 +1,6 @@
 data:
-  sources:
-    - name: ishan
-      place: ams
-      job: JET
-
-    - name: harpreet
-      place: den haag
-      job: sch
+  person:
+    - name: John Doe
+      age: 30
+    - name: Jane Smith
+      age: 25

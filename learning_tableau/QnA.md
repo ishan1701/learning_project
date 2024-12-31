@@ -43,4 +43,6 @@ twxb stands for tableau workbook package. It contains twb along with the extract
 10. Difference between discrete and continuous in tableau?
 
 
-11. 
+11. What is group schedule in tableau?
+
+12. How to add global filter in Tableau?

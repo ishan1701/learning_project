@@ -22,7 +22,7 @@ if __name__ == '__main__':
     start_time = datetime.now()
     value_dict = {}
     nums = []
-    for i in range(10000):
+    for i in range(10):
         nums.append(i)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -30,6 +30,7 @@ if __name__ == '__main__':
 
     for result in results:
         print(result)
+        print(type(result))
     end_time = datetime.now()
 
     print(f'Time taken to execute the code is {end_time - start_time}')

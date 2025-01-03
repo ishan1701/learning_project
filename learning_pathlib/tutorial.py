@@ -94,8 +94,8 @@ def _creating_directory(dir_name: str, file_name):
 
 if __name__ == '__main__':
     _basic_concept()
-    # _creating_directory(dir_name='dir_name',file_name='file.txt')
-    # _opening_file(dir_name='dir_name', file_name='file.txt')
-    #
-    # _creating_new_file(dir_name='dir_name', file_name=f'file_{randint(1,10)}.txt')
-    # _iterating_over_directory(dir_name='dir_name')
+    _creating_directory(dir_name='dir_name',file_name='file.txt')
+    _opening_file(dir_name='dir_name', file_name='file.txt')
+
+    _creating_new_file(dir_name='dir_name', file_name=f'file_{randint(1,10)}.txt')
+    _iterating_over_directory(dir_name='dir_name')

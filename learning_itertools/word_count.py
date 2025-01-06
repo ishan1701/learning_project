@@ -2,7 +2,15 @@ from typing import Generator
 from pathlib import Path
 
 
-def count_words(text: str):
+
+def count_words(text: str)-> Generator[list[str], None, None]:
+    '''
+
+    :param text:
+    :type text:
+    :return:
+    :rtype:
+    '''
     words = text.split(' ')
     print(words)
     if len(words) == 1:
@@ -11,7 +19,14 @@ def count_words(text: str):
         yield list()
 
 
-def read_lines(file_name: str):
+def read_lines(file_name: str)-> Generator[list[str], None, None]:
+    '''
+
+    :param file_name:
+    :type file_name:
+    :return:
+    :rtype:
+    '''
     with open(Path(__file__).parent.joinpath('data', file_name), 'r') as file:
         for line in file:  # looping is required
             if line.strip() != '':

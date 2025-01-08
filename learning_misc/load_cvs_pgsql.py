@@ -19,3 +19,4 @@ engine = create_engine('postgresql+pg8000://tableau:password@localhost:5432/post
 df.to_sql('spotify', schema='spotify', con=engine, if_exists='replace', index=False)
 
 print("Data loaded successfully!")
+

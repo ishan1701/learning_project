@@ -11,7 +11,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # Database connection
-engine = create_engine('mysql+pymysql://tableau:tableau@localhost:3306/spotify')
+engine = create_engine('mysql+pymysql://tableau:password@localhost:3306/spotify')
 
 # Load CSV into a DataFrame
 df = pd.read_csv('/Users/ishan.kumar/PycharmProjects/learning_project/learning_kaggle_python/data/spotify_features.csv')

@@ -1,0 +1,1 @@
+1. https://medium.com/dbsql-sme-engineering/one-big-table-vs-dimensional-modeling-on-databricks-sql-755fc3ef5dfd#:~:text=Performance%3A%20Although%20the%20OBT%20approach,results%20compared%20to%20Dimensional%20Modeling.

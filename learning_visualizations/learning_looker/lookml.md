@@ -26,6 +26,7 @@ dimension: full_name {
 ```
 Next level in lookml structure is **EXPLORE**
 Explore is the way to explore the views. Its a combinations if one of more views.
+**The joining of tables or views are done in the explore.**
 ```angular2html
 explore: orders {
   label: "Order Details"
@@ -228,8 +229,37 @@ dimension: deliver_days {
 ```angular2html
 
 ```
+Below are the type of measures which can be defined as `type` while creating custom measures in lookml.
+
+![img_7.png](img_7.png)
+
+
+# how to add a filter in the lookml models?
+To add the filters in the dashboard, we need to add in the models file.
+1. **always_filter** this is the default filter which can be created in the backend. 
+The users can change the filter in the dashboard as well eventhough its defined in the lookml file.
+```angular2html
+ always_filter: {
+    filters: [order_items.status: "Cancelled"]
+  }
+```
+2. sql_always_where
+
+```angular2html
+sql_always_where: ${created_date}>='2021-01-01' ;;
+```
+The filter will not be created as the default filter and hence users will not be able to see the filter.
+**Hence, this filter is a little bit dangerous to apply and ideally should not be put**
     
+3. sql_always_having
+this is same as having clause in sql
+
+```angular2html
+    sql_always_having: ${order_item_count}>1 ;;  -- here the order_item_count is denoted as count(*) where ad order_tem is the name of the view
+```
+The sql under the hood will be   `` HAVING (COUNT(*))>1 ``
 
 
+# Conditional filter in models
 
 

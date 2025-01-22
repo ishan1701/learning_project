@@ -261,5 +261,158 @@ The sql under the hood will be   `` HAVING (COUNT(*))>1 ``
 
 
 # Conditional filter in models
+If I added the below filter 
+![img_8.png](img_8.png)
+then, the filter will be applied on to explore.
+![img_9.png](img_9.png)
+If I add month to the filter, then the conditionally will be removed.
+![img_10.png](img_10.png)
+
+
+
+# Joins in lookml.
+with joins we can create the models in lookml.
+
+```
+explore: order_items {
+
+  join: inventory_items {
+    type: left_outer
+    sql_on:  ${order_items.inventory_item_id} = ${inventory_items.id};;
+    relationship: many_to_one
+  }
+
+  join: products {
+    type: left_outer
+    sql_on: ${inventory_items.product_id} = ${products.id}  AND ${products.id}>500;;
+    fields: [products.brand, products.category, products.department]
+  }
+
+  join: users {
+    type: left_outer
+    sql_on: ${order_items.user_id} = ${users.id} ;;
+  }
+
+}
+```
+
+lookml supports all the main sql join
+
+
+# Some advanced features of the lookml
+
+#### 1. Datagroups
+a. It is used to define the caching policy.
+```
+datagroup: default {
+  sql_trigger: select 1 ;;
+  max_cache_age: "24 hours"
+}
+
+persist_with: default
+
+```
+b. The best way to define the data group is on the model file rather as a seprate file. 
+```
+connection: "bigquery_public_data_looker"
+
+# include all the views
+include: "/views/*.view"
+include: "/z_tests/*.lkml"
+include: "/**/*.dashboard"
+
+datagroup: training_ecommerce_default_datagroup {  --name of the datagroup
+  # sql_trigger: SELECT MAX(id) FROM etl_log;;     -- The query will be run in periodic basis to check if the data has been updated in the table which will lead to refresh the cache
+  max_cache_age: "1 hour"                           -- amount of time the data will be fetched from the cache rather than bq
+}
+```
+
+**A datagroup cannot have both sql_trigger and interval_trigger parameters. If you define a datagroup with both parameters, the datagroup will use the interval_trigger value and ignore the sql_trigger value, since the sql_trigger parameter requires using database resources when querying the database.**
+
+**Question: When the cache will be refreshed in case the data has been updated.
+Is is after the `max_cache_age` expires or when looker see the that the data has been changed?**
+
+Answer: 
+
+
+Below is an example to define custom data_groups for explores.
+```
+connection: "bigquery_public_data_looker"
+
+# include all the views
+include: "/views/*.view"
+include: "/z_tests/*.lkml"
+include: "/**/*.dashboard"
+
+#DEFINE CUSTOM DATAGROUP 
+datagroup: training_ecommerce_default_datagroup {
+  sql_trigger: SELECT 1;;
+  max_cache_age: "1 hour"
+}
+
+#DEFINE ANOTHER CUSTOM DATAGROUP 
+datagroup: another_datagroup {
+  sql_trigger: SELECT 1;;
+  max_cache_age: "5 hour"
+}
+
+label: "E-Commerce Training"
+
+explore: products {
+  persist_with: training_ecommerce_default_datagroup  # HERE THE DATA_GROUP CAN BE USED FOR CACHING 
+  group_label: "products"
+}
+explore: order_items {
+  persist_with: another_datagroup   # HERE THE DATA_GROUP CAN BE USED FOR CACHING
+  group_label: "order_items"
+  join: users {
+    type: left_outer
+    sql_on: ${order_items.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+
+  join: inventory_items {
+
+    type: left_outer
+    sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
+    relationship: many_to_one
+  }
+
+  join: products {
+    type: left_outer
+    sql_on: ${inventory_items.product_id} = ${products.id} ;;
+    relationship: many_to_one
+  }
+
+  join: distribution_centers {
+    type: left_outer
+    sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: events {
+  join: event_session_facts {
+    type: left_outer
+    sql_on: ${events.session_id} = ${event_session_facts.session_id} ;;
+    relationship: many_to_one
+  }
+  join: event_session_funnel {
+    type: left_outer
+    sql_on: ${events.session_id} = ${event_session_funnel.session_id} ;;
+    relationship: many_to_one
+  }
+  join: users {
+    type: left_outer
+    sql_on: ${events.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+}
+
+```
+
+**_Note: The caching policy is defined for the whole explore._**
+
+
 
 

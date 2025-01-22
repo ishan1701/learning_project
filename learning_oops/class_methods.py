@@ -20,7 +20,7 @@ class Item:
         return f'Item({self.name}, {self.price})'
 
     @classmethod
-    def read_csv(cls, file_path: str, file_name: str):
+    def read_csv(cls, file_path: str, file_name: str)->Generator[iter, None, None]:
         with open(Path(__file__).parent.joinpath(file_path, file_name), 'r') as f_open:
             reader = csv.reader(f_open, delimiter=',', skipinitialspace=True)
 

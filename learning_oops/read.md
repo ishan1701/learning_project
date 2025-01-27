@@ -140,7 +140,14 @@ So, if you need to interact with or modify class-level data or provide alternati
 An example is creating the objects from varios file types like yaml or json
 
 
-# Python decorators
+# Encapsulations
 
+Refers to mechanism to restring the direct access to some of the attributes. 
+* creating a decorator and making the members as private is one of the way.
+* making the members as private is also one of the way.
+* It refers to the bundling of data (attributes) and methods (functions) that operate on the data into a single unit, typically a class. Encapsulation also restricts direct access to certain attributes or methods, providing controlled access via public methods (getters and setters).
 
+**SO ONE OF THE USE CASE OF THE PROPERTY IS TO HIDE THE ACCESS OF THE OBJECTS(WHETHER ITS PROTECTED OF PRIVATE)**
 
+# Abstraction
+It defines to hide the necessary methods from the instances. For example 

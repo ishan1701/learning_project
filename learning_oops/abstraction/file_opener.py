@@ -37,7 +37,8 @@ class JsonLoader(FileLoader):
 
 
 
-class YamlLoader(FileLoader):
+class \
+        YamlLoader(FileLoader):
     def __init__(self, path, name):
         self.file_type = 'yaml'
         super().__init__(path=path, name=name)

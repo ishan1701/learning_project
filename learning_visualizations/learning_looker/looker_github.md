@@ -18,4 +18,4 @@ Each LookML project corresponds to a Git repository. Any time a user is in Devel
 10. how permission of looker works with looker?
 11. APIs in looker
 12. How looker can be connected to tableau desktop?
-13. 
+13. what is pdt in looker

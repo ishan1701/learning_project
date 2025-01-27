@@ -121,5 +121,26 @@ print(discounted_price)  # Output: 1080.0
 ```
 here want to provide a utility to calculate discounts. This operation doesn’t depend on a specific product instance or the class itself but is related to products. A static method is perfect for this.
 
-# Inheritance
+
+
+ @staticmethod is a method that belongs to the class itself but doesn't need access to instance data or class-level data. It’s used for functionality that is related to the class but doesn't need to access or modify the class state or instance state.
+
+
+**IN SHORT 
+THE CLASS METHOD IS GENERALLY USED TO CREATE THE OBJECTS
+
+ 
+`
+They are typically used to work with class-level data or to create instances of the class in a controlled manner (using factory methods or alternative constructors).
+Static methods, on the other hand, can also be called on the class without an instance, but they don't have access to class-level or instance-level data.
+So, if you need to interact with or modify class-level data or provide alternative ways to create class instances, class methods are the right tool for the job.**
+`
+![img.png](img.png)
+
+An example is creating the objects from varios file types like yaml or json
+
+
+# Python decorators
+
+
 

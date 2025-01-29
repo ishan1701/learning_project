@@ -1,0 +1,40 @@
+from shapes import Shape
+from point import Point
+from utils import distance
+from math import pi
+
+class Circle(Shape):
+    def __init__(self, first_point: Point, second_point: Point):
+        self._first_point = first_point
+        self._second_point = second_point
+        super().__init__(shape_type='circle')
+
+    @property
+    def first_point(self)->Point:
+        return self._first_point
+
+    @property
+    def second_point(self)->Point:
+        return self._second_point
+
+    @property
+    def radius(self)->float:
+        return distance(self._first_point, self._second_point)
+
+    @property
+    def area(self)->float:
+        return pi * (self.radius ** 2)
+
+
+    def __repr__(self):
+        return f'Circle created with radius {self.radius} with area {self.area})'
+
+    def if_point_lies(self, point: Point):
+        point_distance_frm_center = distance(self._first_point, point)
+
+        if point_distance_frm_center < self.radius:
+            return True
+        else:
+            return False
+
+

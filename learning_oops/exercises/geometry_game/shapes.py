@@ -9,17 +9,17 @@ class Shape(ABC):
 
     @property
     def shape_type(self):
-        return f'the shape type is {self.shape_type} and shape class is {self.__class__.__name__}'
+        return f'the shape type is {self.shape} and shape class is {self.__class__.__name__}'
 
     @property
     @abstractmethod
     def area(self):
         pass
 
-    # @property
-    # @abstractmethod
-    # def perimeter(self):
-    #     pass
+    @property
+    @abstractmethod
+    def perimeter(self):
+        pass
 
     # @classmethod
     # @abstractmethod
@@ -29,5 +29,11 @@ class Shape(ABC):
     @abstractmethod
     def if_point_lies(self, point: Point):
         pass
+
+
+    @abstractmethod
+    def create_shape(self):
+        pass
+
 
 

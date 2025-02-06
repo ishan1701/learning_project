@@ -1,0 +1,9 @@
+In this app, there are multiple flatmates which are residing in aa
+apartment. New members can join the apartment.But the max of people per room
+residing in a rooms cant increased by 2. Apartment has fixed bills
+1. Rent
+2. Cleaning
+3. electricity
+
+Now if a person is on vacation then the running bills like elect
+will not be added for the days a person is out.

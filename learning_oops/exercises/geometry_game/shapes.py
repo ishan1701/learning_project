@@ -36,4 +36,9 @@ class Shape(ABC):
         pass
 
 
+    # @staticmethod
+    # @abstractmethod
+    # def draw():
+    #     pass
+
 

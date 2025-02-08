@@ -1,3 +1,5 @@
+from idlelib.macosx import addOpenEventSupport
+
 from flat_mates import FlatMate
 from rooms import Room
 
@@ -5,8 +7,10 @@ from rooms import Room
 class Apartment:
     num_tenants = 0
     flat_mates = []
+    apartments = []
 
-    def __init__(self, name: str, address: str, num_rooms: int, rooms_details:list[Room]):
+    def __init__(self, id: int, name: str, address: str, num_rooms: int, rooms_details: list[Room]):
+        self._id = id
         self._name = name
         self._address = address
         self._num_rooms = num_rooms
@@ -14,9 +18,27 @@ class Apartment:
         if len(rooms_details) != self._num_rooms:
             raise ValueError("Number of rooms does not match number of rooms")
 
+        if id in self.apartments:
+            print(f'Apartment {id} already exists')
+
+        else:
+            self.apartments.append(self)
+
     @property
-    def rooms(self):
+    def room_config(self):
+        room_details = list()
+        for room in self.room_details:
+            room_details.append(
+                {'room_id': room.room_id, 'have_bathroom': room.attached_bathroom, 'room_mates': room.rooms_mates})
+        return room_details
+
+    @property
+    def num_rooms(self):
         return self._num_rooms
+
+    @property
+    def id(self):
+        return self._id
 
     @property
     def name(self):
@@ -27,14 +49,16 @@ class Apartment:
         return self._address
 
     def add_new_tenant(self, person: FlatMate, room: Room):
-        self.num_tenants += 1
+
         self.flat_mates.append(person)
         room.add_room_mate(person)
+        self.num_tenants += 1
 
     def remove_tenant(self, person: FlatMate, room: Room):
-        self.num_tenants -= 1
+
         self.flat_mates.remove(person)
         room.remove_room_mate(person)
+        self.num_tenants -= 1
 
     def __repr__(self):
-        return f'Apartment(name={self.name}, address={self.address})'
+        return f'Apartment(name={self.name}, address={self.address}, num_rooms={self.num_rooms},room_details={self.room_details})'

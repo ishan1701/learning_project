@@ -25,5 +25,6 @@ class FlatMate:
     def __repr__(self):
         return f'FlatMate({self.name}, {self.age}, {self.origin})'
 
-if __name__ == '__main__':
-    pass
+    @classmethod
+    def from_json(cls, dict: dict):
+        return cls(dict['name'], dict['dob'], dict['origin'])

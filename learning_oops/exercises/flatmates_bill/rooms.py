@@ -8,15 +8,12 @@ class Room:
 
     def __init__(self, room_id: int, attached_bathroom: bool):
         self.room_id = room_id
-        self._attached_bathroom = attached_bathroom
+        self.attached_bathroom = attached_bathroom
 
-    @property
-    def attached_bathroom(self) -> bool:
-        return self._attached_bathroom
 
     def add_room_mate(self, mate: FlatMate):
         print(f"Adding room mate {mate}")
-        if self.num > self.MAX_ROOM_MATE:
+        if self.num == self.MAX_ROOM_MATE:
             raise ValueError(f"Room {self.num} exceeds maximum number of {self.MAX_ROOM_MATE}")
         self.rooms_mates.append(mate)
         self.num += 1
@@ -31,4 +28,4 @@ class Room:
         return True if self.num == 0 else False
 
     def __repr__(self):
-        return f"Room({self.room_id}, {self.attached_bathroom})"
+        return f"Room(room_id = {self.room_id}, attached_bathroom = {self.attached_bathroom})"

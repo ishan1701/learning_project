@@ -26,5 +26,5 @@ class FlatMate:
         return f'FlatMate({self.name}, {self.age}, {self.origin})'
 
     @classmethod
-    def from_json(cls, dict: dict):
-        return cls(dict['name'], dict['dob'], dict['origin'])
+    def from_json(cls, **kwargs):
+        return cls(kwargs['name'], kwargs['dob'], kwargs['origin'])

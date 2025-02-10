@@ -1,0 +1,14 @@
+{ "flatmate_id": 1, "name": "Alice Johnson", "dob": "1992-05-14", "origin_city": "Chicago", "apartment_id": 1, "room_id": 101 }
+{ "flatmate_id": 2, "name": "Bob Smith", "dob": "1988-11-23", "origin_city": "New York", "apartment_id": 1, "room_id": 102 }
+{ "flatmate_id": 3, "name": "Charlie Davis", "dob": "1995-07-30", "origin_city": "Los Angeles", "apartment_id": 1, "room_id": 103 }
+{ "flatmate_id": 4, "name": "David Brown", "dob": "1990-01-17", "origin_city": "Houston", "apartment_id": 2, "room_id": 201 }
+{ "flatmate_id": 5, "name": "Emma Wilson", "dob": "1993-09-25", "origin_city": "San Francisco", "apartment_id": 2, "room_id": 202 }
+{ "flatmate_id": 6, "name": "Frank Thomas", "dob": "1987-03-12", "origin_city": "Boston", "apartment_id": 3, "room_id": 301 }
+{ "flatmate_id": 7, "name": "Grace Lee", "dob": "1996-06-08", "origin_city": "Seattle", "apartment_id": 3, "room_id": 302 }
+{ "flatmate_id": 8, "name": "Henry White", "dob": "1994-04-19", "origin_city": "Miami", "apartment_id": 3, "room_id": 303 }
+{ "flatmate_id": 9, "name": "Ivy Harris", "dob": "1991-12-05", "origin_city": "Denver", "apartment_id": 3, "room_id": 304 }
+{ "flatmate_id": 10, "name": "Jack Martin", "dob": "1989-08-27", "origin_city": "Austin", "apartment_id": 4, "room_id": 401 }
+{ "flatmate_id": 11, "name": "Kathy Clark", "dob": "1997-10-21", "origin_city": "Philadelphia", "apartment_id": 4, "room_id": 402 }
+{ "flatmate_id": 12, "name": "Leo Walker", "dob": "1992-02-14", "origin_city": "Dallas", "apartment_id": 4, "room_id": 403 }
+{ "flatmate_id": 13, "name": "Mia Hall", "dob": "1990-07-03", "origin_city": "San Diego", "apartment_id": 5, "room_id": 501 }
+{ "flatmate_id": 14, "name": "Noah Allen", "dob": "1998-05-29", "origin_city": "Atlanta", "apartment_id": 5, "room_id": 502 }

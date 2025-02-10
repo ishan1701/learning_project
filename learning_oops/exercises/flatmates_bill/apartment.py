@@ -1,4 +1,3 @@
-from idlelib.macosx import addOpenEventSupport
 
 from flat_mates import FlatMate
 from rooms import Room
@@ -20,6 +19,7 @@ class Apartment:
 
         if id in self.apartments:
             print(f'Apartment {id} already exists')
+            print(f'skipping apartment {id}')
 
         else:
             self.apartments.append(self)
@@ -59,6 +59,10 @@ class Apartment:
         self.flat_mates.remove(person)
         room.remove_room_mate(person)
         self.num_tenants -= 1
+
+    @classmethod
+    def from_json(cls, **kwargs):
+        return cls(id=kwargs['id'],name=kwargs['name'],address=kwargs['address'],num_rooms=kwargs['num_rooms'],rooms_details=kwargs['rooms_details'])
 
     def __repr__(self):
         return f'Apartment(name={self.name}, address={self.address}, num_rooms={self.num_rooms},room_details={self.room_details})'

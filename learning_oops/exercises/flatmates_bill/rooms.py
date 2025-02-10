@@ -1,4 +1,5 @@
 from flat_mates import FlatMate
+from learning_oops import self
 
 
 class Room:
@@ -9,7 +10,6 @@ class Room:
     def __init__(self, room_id: int, attached_bathroom: bool):
         self.room_id = room_id
         self.attached_bathroom = attached_bathroom
-
 
     def add_room_mate(self, mate: FlatMate):
         print(f"Adding room mate {mate}")
@@ -24,8 +24,17 @@ class Room:
         self.rooms_mates.remove(mate)
         self.num -= 1
 
+    @property
     def if_room_empty(self):
         return True if self.num == 0 else False
+
+    @property
+    def rooms_status(self):
+        return f'{self.room_id} has attached br sd {self.attached_bathroom} with flatmates- {self.rooms_mates}'
+
+    @classmethod
+    def from_json(cls, **kwargs):
+        return cls(kwargs["room_id"], kwargs["attached_bathroom"])
 
     def __repr__(self):
         return f"Room(room_id = {self.room_id}, attached_bathroom = {self.attached_bathroom})"

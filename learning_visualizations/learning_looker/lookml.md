@@ -8,7 +8,7 @@
 Answer:
 
 Below are the elements of the lookml.
-![img_5.png](img_5.png)
+![img_5.png](images/img_5.png)
 
 The lowest level if lookml is **FIELDS**
 
@@ -214,7 +214,7 @@ measure: count {
 ```
 So drill fields are something which can be expanded more granually. So its just like adding a column in count with ading in the group by clause.
 
-![img_6.png](img_6.png)
+![img_6.png](images/img_6.png)
 
 
 # creating a custom dimension
@@ -231,7 +231,7 @@ dimension: deliver_days {
 ```
 Below are the type of measures which can be defined as `type` while creating custom measures in lookml.
 
-![img_7.png](img_7.png)
+![img_7.png](images/img_7.png)
 
 
 # how to add a filter in the lookml models?
@@ -262,11 +262,11 @@ The sql under the hood will be   `` HAVING (COUNT(*))>1 ``
 
 # Conditional filter in models
 If I added the below filter 
-![img_8.png](img_8.png)
+![img_8.png](images/img_8.png)
 then, the filter will be applied on to explore.
-![img_9.png](img_9.png)
+![img_9.png](images/img_9.png)
 If I add month to the filter, then the conditionally will be removed.
-![img_10.png](img_10.png)
+![img_10.png](images/img_10.png)
 
 
 

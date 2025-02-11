@@ -1,12 +1,11 @@
-
 from flat_mates import FlatMate
 from rooms import Room
 
 
 class Apartment:
-    num_tenants = 0
-    flat_mates = []
-    apartments = []
+    num_tenants: int = 0
+    flat_mates: list[FlatMate] = []
+    apartments: dict[int, 'Apartment'] = dict()
 
     def __init__(self, id: int, name: str, address: str, num_rooms: int, rooms_details: list[Room]):
         self._id = id
@@ -22,7 +21,7 @@ class Apartment:
             print(f'skipping apartment {id}')
 
         else:
-            self.apartments.append(self)
+            self.apartments[id]=self
 
     @property
     def room_config(self):
@@ -62,7 +61,12 @@ class Apartment:
 
     @classmethod
     def from_json(cls, **kwargs):
-        return cls(id=kwargs['id'],name=kwargs['name'],address=kwargs['address'],num_rooms=kwargs['num_rooms'],rooms_details=kwargs['rooms_details'])
+        return cls(id=kwargs['id'], name=kwargs['name'], address=kwargs['address'], num_rooms=kwargs['num_rooms'],
+                   rooms_details=kwargs['rooms_details'])
 
     def __repr__(self):
         return f'Apartment(name={self.name}, address={self.address}, num_rooms={self.num_rooms},room_details={self.room_details})'
+
+    @classmethod
+    def get_apartment_bills(cls):
+        pass

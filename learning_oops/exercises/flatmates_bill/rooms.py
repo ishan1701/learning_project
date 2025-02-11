@@ -1,5 +1,6 @@
 from flat_mates import FlatMate
-from learning_oops import self
+from bill import Bill
+from functools import reduce
 
 
 class Room:
@@ -35,6 +36,21 @@ class Room:
     @classmethod
     def from_json(cls, **kwargs):
         return cls(kwargs["room_id"], kwargs["attached_bathroom"])
+
+    def split_bill(self, bill: Bill):
+        if self.if_room_empty:
+            print(f"Room {self.room_id} is empty. Hence, not splitting bill.")
+            return
+        if bill.is_fixed:
+            for room_mate in self.rooms_mates:
+                room_mate.bill_amount += (bill.amount / len(self.rooms_mates))
+        else:
+            total_roommate_days = int(
+                reduce(lambda x, y: (30 - x.vacation_days) + (30 - y.vacation_days), self.rooms_mates))
+
+            cost_per_day = bill.amount / total_roommate_days
+            for room_mate in self.rooms_mates:
+                room_mate.bill_amount += (room_mate.vacation_days * cost_per_day)
 
     def __repr__(self):
         return f"Room(room_id = {self.room_id}, attached_bathroom = {self.attached_bathroom})"

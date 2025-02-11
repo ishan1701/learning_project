@@ -10,7 +10,7 @@
 
 #### Below is the example of the table option.
 
-![img_1.png](img_1.png)
+![img_1.png](images/img_1.png)
 
 
 # Column chart
@@ -18,13 +18,13 @@
 
 #### Below is the example of the column chart.
 
-![img_3.png](img_3.png)
+![img_3.png](images/img_3.png)
 
 # Bar charts.
 ##### It is the same as column charts.
 Just the change is rows oriented.
 
-![img_4.png](img_4.png)
+![img_4.png](images/img_4.png)
 
 
 

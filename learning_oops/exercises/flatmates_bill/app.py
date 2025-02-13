@@ -26,6 +26,8 @@ def _load_flat_mates(file: str, data_directory):
 def _load_bill(file: str):
     pass
 
+def _load_vacation(file: str):
+    pass
 
 def main():
     _load_apartment(file='apartment.jsonl', data_directory='data')

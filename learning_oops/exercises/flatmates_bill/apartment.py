@@ -1,5 +1,7 @@
 from flat_mates import FlatMate
 from rooms import Room
+from typing import Union
+from bill import Rental, Cleaning
 
 
 class Apartment:
@@ -21,7 +23,7 @@ class Apartment:
             print(f'skipping apartment {id}')
 
         else:
-            self.apartments[id]=self
+            self.apartments[id] = self
 
     @property
     def room_config(self):
@@ -70,3 +72,22 @@ class Apartment:
     @classmethod
     def get_apartment_bills(cls):
         pass
+
+    def split_bill(self, bill: Union[Rental, Cleaning]):
+        if not bill.is_fixed:
+            raise ValueError(f'Bill {bill.__class__.__name__} should be fixed.'
+                             f'Fixed bills needs to be calculated at the room level')
+
+        if len(self.flat_mates) == 0:
+            print(f"Apartment {self.id} is empty. Hence, not splitting bill.")
+            return
+
+        shared_amount = bill.amount / len(self.flat_mates)
+        for flat_mate in self.flat_mates:
+            flat_mate.bill_amount += shared_amount
+
+
+    def print_bills(self):
+        for apt in self.apartments.values():
+            pass
+

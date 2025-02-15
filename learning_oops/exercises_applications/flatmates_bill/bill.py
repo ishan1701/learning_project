@@ -5,7 +5,12 @@ from abc import ABC, abstractmethod
 
 # @dataclass(frozen=True)
 class Bill(ABC):
+    '''
+    Purpose : This class is an abstract class for the bill which can be generated for an apartment.
+            This file contains a factory method to return the instance of class for each bill.
+    '''
     def __init__(self, date: date, bill_number,amount, apt, room_number:int):
+
         self.date= date
         self.bill_number = bill_number
         self.amount = amount
@@ -15,8 +20,11 @@ class Bill(ABC):
     @classmethod
     @abstractmethod
     def from_json(cls, **kwargs):
-        # return cls(json_data["date"], json_data["bill_number"], json_data["amount"], json_data["apt"],
-        #            json_data["room_number"], True if json_data["is_fixed"]=="true" else False)
+        '''
+        Purpose: Method to create a Bill object from json. A file contains all the bills which can be generated for an apartment.
+        :param kwargs: keyword args
+
+        '''
         pass
 
 

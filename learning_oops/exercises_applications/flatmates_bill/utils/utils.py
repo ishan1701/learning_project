@@ -1,7 +1,6 @@
 import json
 
-from apartment import Apartment
-from rooms import Room
+from learning_oops.exercises_applications.flatmates_bill.src.apartment import Apartment
 
 
 def print_apartment_details(apartments: list[Apartment]) -> None:

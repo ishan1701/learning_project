@@ -19,3 +19,11 @@ Each LookML project corresponds to a Git repository. Any time a user is in Devel
 11. APIs in looker
 12. How looker can be connected to tableau desktop?
 13. what is pdt in looker
+
+
+
+# Looker git integration
+1. Looker uses Git to record changes and manage file versions. Each LookML project corresponds to a Git repository. 
+2. Any time a user is in Development Mode that user is on their own Git branch.
+3. To access Git integration options, you must have Development Mode turned on.
+4. 

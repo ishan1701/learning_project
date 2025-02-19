@@ -2,9 +2,13 @@
 ## What is an UML and how its good in design
 To illustrate the structure of the design patterns, class diagram used.
 
+# **There are two aspects, first is class diagrams and another is sequence diagrams.**
+
 ## Class Diagram 
 It denoted the **class information** like
+
 a. Attributes
+
 b. Operations (methods)
 
 ![img.png](img.png)
@@ -104,3 +108,54 @@ Here the associated class can hold the objects of another class
 A dependency is a relationship where one class (the client) relies on another class (the supplier) for some functionality
 ![img_3.png](img_3.png)
 Below is the code example
+```
+from abc import ABC, abstractmethod
+
+# Abstract Shape Class
+class Shape(ABC):
+    def __init__(self, color: str, filled: bool):
+        self.color = color
+        self.filled = filled
+
+    @abstractmethod
+    def get_area(self) -> float:
+        pass
+
+    @abstractmethod
+    def get_perimeter(self) -> float:
+        pass
+
+    def __str__(self) -> str:
+        return f"Shape(color={self.color}, filled={self.filled})"
+
+# Circle Class (inherits from Shape)
+class Circle(Shape):
+    def __init__(self, color: str, filled: bool, radius: float):
+        super().__init__(color, filled)
+        self.radius = radius
+
+    def get_area(self) -> float:
+        return 3.14159 * self.radius ** 2
+
+    def get_perimeter(self) -> float:
+        return 2 * 3.14159 * self.radius
+
+    def __str__(self) -> str:
+        return f"Circle(color={self.color}, filled={self.filled}, radius={self.radius})"
+
+# Printer Class (depends on Shape)
+class Printer:
+    def print_shape_details(self, shape: Shape):
+        print(f"Shape Details: {shape}")
+        print(f"Area: {shape.get_area()}")
+        print(f"Perimeter: {shape.get_perimeter()}")
+
+# Example Usage
+circle = Circle("Red", True, 5.0)
+printer = Printer()
+printer.print_shape_details(circle)
+```
+Here the printer class does ot hold the data of Shape class. 
+But rather it provides a service to print the shapes. **SO SHAPE USES PRINTER FOR SOME FUNCTIONALITY.**
+
+## sequence Diagram

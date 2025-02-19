@@ -1,5 +1,5 @@
 from flat_mates import FlatMate
-from bill import Water, Electricity
+from learning_oops.exercises_applications.flatmates_bill.src.bill import Water, Electricity
 from functools import reduce
 from typing import Union
 import calendar

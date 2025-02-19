@@ -1,8 +1,6 @@
-from bill import Bill
-from apartment import Apartment
-from flat_mates import FlatMate
-from rooms import Room
-from utils import read_json
+from learning_oops.exercises_applications.flatmates_bill.src.apartment import Apartment
+from learning_oops.exercises_applications.flatmates_bill.src.rooms import Room
+from utils.utils import read_json
 
 
 def _load_apartment(file: str, data_directory: str):

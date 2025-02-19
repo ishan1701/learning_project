@@ -1,8 +1,8 @@
-from apartment import Apartment
-from rooms import Room
-from flat_mates import FlatMate
+from learning_oops.exercises_applications.flatmates_bill.src.apartment import Apartment
+from learning_oops.exercises_applications.flatmates_bill.src.rooms import Room
+from learning_oops.exercises_applications.flatmates_bill.src.flat_mates import FlatMate
 from datetime import datetime
-from utils import print_apartment_details
+from utils.utils import print_apartment_details
 
 apartments: list[Apartment] = list()
 

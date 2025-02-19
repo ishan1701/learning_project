@@ -1,7 +1,6 @@
 from datetime import date
 
-from bill import Bill
-from learning_oops import self
+from learning_oops.exercises_applications.flatmates_bill.src.bill import Bill
 
 
 class FlatMate:

@@ -1,5 +1,5 @@
 from datetime import date
-from apartment import Apartment
+from learning_oops.exercises_applications.flatmates_bill.src.apartment import Apartment
 from rooms import Room
 from flat_mates import FlatMate
 from typing import Union

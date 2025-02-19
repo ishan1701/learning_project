@@ -317,3 +317,157 @@ class Point:
 
 Here we need to define the data_type as 'Point' in quotes. This needs to be done because the POint class is not fully defined at the time distance creation. 
 This is termed as **forward reference.**
+
+
+## classes and objects
+1. While defining the class, we shud think if its a data oriented class or behavior oriented class.
+2. classes are **nouns**. the best way to have a design.txt file before start coding and whaever Nouns we get, we should define the classes
+
+## Encapsulation
+In general a well defined class already achieve encapsulation in sense that it had captured all the 
+relevant data and functionality. 
+
+For example 
+An Apartment class is defined which should encapsulates the **Room class**.
+So the room class should be defined before the Apartment class
+
+
+## Inheritance
+Inheritance allows us to GENERALIZE
+a. Interface contracts
+
+It defines a set of methods that needs to be implemented by any class that adheres the contract.
+```
+from abc import ABC, abstractmethod
+
+# Interface (Abstract Base Class)
+class Drawable(ABC):
+    @abstractmethod
+    def draw(self):
+        pass
+
+# Circle Class (implements Drawable)
+class Circle(Drawable):
+    def __init__(self, radius: float):
+        self.radius = radius
+
+    def draw(self):
+        print(f"Drawing a Circle with radius {self.radius}")
+
+# Rectangle Class (implements Drawable)
+class Rectangle(Drawable):
+    def __init__(self, width: float, height: float):
+        self.width = width
+        self.height = height
+
+    def draw(self):
+        print(f"Drawing a Rectangle with width {self.width} and height {self.height}")
+
+# Example Usage
+circle = Circle(5.0)
+rectangle = Rectangle(4.0, 6.0)
+
+shapes = [circle, rectangle]
+for shape in shapes:
+    shape.draw()
+```
+**Here the def draw method should be implemented in the child classes, because they are bind with the contract.
+So child class and the parent class are bound to an inheritance contract.**
+
+
+b. partially inheritance contracts
+Refer to a concept where a class inherits only part of the behavior or properties from another class or interface, 
+rather than fully implementing or extending it. 
+
+![img_1.png](img_1.png)
+
+Below is the code example
+
+```
+from abc import ABC, abstractmethod
+
+# Interface (Abstract Base Class)
+class Drawable(ABC):
+    @abstractmethod
+    def draw(self):
+        pass
+
+    @abstractmethod
+    def resize(self, factor: float):
+        pass
+
+# Circle Class (partially implements Drawable)
+class Circle(Drawable):
+    def __init__(self, radius: float):
+        self.radius = radius
+
+    def draw(self):
+        print(f"Drawing a Circle with radius {self.radius}")
+
+    # resize() is not implemented, so Circle is a partial implementation of Drawable
+
+# ResizableCircle Class (fully implements Drawable)
+class ResizableCircle(Drawable):
+    def __init__(self, radius: float):
+        self.radius = radius
+
+    def draw(self):
+        print(f"Drawing a ResizableCircle with radius {self.radius}")
+
+    def resize(self, factor: float):
+        self.radius *= factor
+        print(f"Resized circle to radius {self.radius}")
+
+# Example Usage
+circle = Circle(5.0)
+circle.draw()  # Works
+# circle.resize(1.5)  # This would raise an error since resize() is not implemented
+
+resizable_circle = ResizableCircle(5.0)
+resizable_circle.draw()  # Works
+resizable_circle.resize(1.5)  # Works
+```
+
+Here Circle is class which partially inherited where resize is not possible. **So the abstract method - resize is not implemented**
+On the other hand, ResizableCircle is full inherited. **Hence all the abstract method should be implemented.**
+
+Below is another example
+```
+from abc import ABC, abstractmethod
+
+# Interface (Abstract Base Class)
+class PaymentProcessor(ABC):
+    @abstractmethod
+    def process_payment(self, amount: float):
+        pass
+
+    @abstractmethod
+    def process_refund(self, amount: float):
+        pass
+
+# CreditCardProcessor (fully implements PaymentProcessor)
+class CreditCardProcessor(PaymentProcessor):
+    def process_payment(self, amount: float):
+        print(f"Processing credit card payment of ${amount:.2f}")
+
+    def process_refund(self, amount: float):
+        print(f"Processing credit card refund of ${amount:.2f}")
+
+# CashProcessor (partially implements PaymentProcessor)
+class CashProcessor(PaymentProcessor):
+    def process_payment(self, amount: float):
+        print(f"Processing cash payment of ${amount:.2f}")
+
+    # process_refund() is not implemented, as cash refunds are not supported
+
+# Example Usage
+credit_card_processor = CreditCardProcessor()
+credit_card_processor.process_payment(100.0)  # Works
+credit_card_processor.process_refund(50.0)   # Works
+
+cash_processor = CashProcessor()
+cash_processor.process_payment(75.0)  # Works
+# cash_processor.process_refund(25.0)  # This would raise an error since refunds are not supported
+```
+
+## UMLs for python OOPS

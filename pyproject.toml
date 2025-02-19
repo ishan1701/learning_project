@@ -49,6 +49,7 @@ urllib3="^2.3.0"
 webencodings="^0.5.1"
 apache-airflow="2.9.0"
 pylint="3.3.4"
+fpdf="1.7.2"
 
 [build-system]
 requires = ["poetry-core"]

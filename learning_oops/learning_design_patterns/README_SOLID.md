@@ -6,7 +6,7 @@
 ## Encapsulation
 In general a well defined class already achieve encapsulation in sense that it had captured all the 
 relevant data and functionality. 
-![img_3.png](img_3.png)
+![img_3.png](uml/img_3.png)
 
 For example 
 An Apartment class is defined which should encapsulates the **Room class**.
@@ -14,7 +14,7 @@ So the room class should be defined before the Apartment class
 
 
 ## Inheritance
-![img_5.png](img_5.png)
+
 Inheritance allows us to GENERALIZE
 a. Interface contracts
 
@@ -61,7 +61,6 @@ b. partially inheritance contracts
 Refer to a concept where a class inherits only part of the behavior or properties from another class or interface, 
 rather than fully implementing or extending it. 
 
-![img_1.png](img_1.png)
 
 Below is the code example
 

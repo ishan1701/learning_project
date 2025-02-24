@@ -290,6 +290,7 @@ Use static methods for utility functions.
 
 Use properties for controlled attribute access and encapsulation.
 # Encapsulations
+![img_4.png](img_4.png)
 
 Refers to mechanism to restring the direct access to some of the attributes. 
 * creating a decorator and making the members as private is one of the way.
@@ -326,6 +327,7 @@ This is termed as **forward reference.**
 ## Encapsulation
 In general a well defined class already achieve encapsulation in sense that it had captured all the 
 relevant data and functionality. 
+![img_3.png](img_3.png)
 
 For example 
 An Apartment class is defined which should encapsulates the **Room class**.
@@ -333,6 +335,7 @@ So the room class should be defined before the Apartment class
 
 
 ## Inheritance
+![img_5.png](img_5.png)
 Inheritance allows us to GENERALIZE
 a. Interface contracts
 
@@ -471,3 +474,5 @@ cash_processor.process_payment(75.0)  # Works
 ```
 
 ## UMLs for python OOPS
+
+

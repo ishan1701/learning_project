@@ -289,6 +289,11 @@ Use class methods for class-level operations.
 Use static methods for utility functions.
 
 Use properties for controlled attribute access and encapsulation.
+
+
+Here is lne more example for static methods inside a class.
+
+
 # Encapsulations
 ![img_4.png](img_4.png)
 

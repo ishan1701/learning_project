@@ -684,3 +684,47 @@ print(processor.process())
 **Dependency Injection is one of the most common ways to implement the Dependency Inversion Principle.**
 
 ## Are design patterns are based on SOLID principles?
+
+1. Yes, many design patterns are based on the SOLID principles or align well with them! While SOLID is a set of 
+object-oriented design principles, design patterns are proven solutions to common design problems. 
+In fact, a lot of design patterns are formulated to help achieve the goals of the SOLID principles, 
+which aim to make software more modular, maintainable, flexible, and extensible.
+
+2. Yes, design patterns are often based on or aligned with the SOLID principles. SOLID principles provide the 
+foundational guidelines for designing clean, maintainable, and scalable object-oriented systems, 
+while design patterns are proven solutions to common problems that arise when applying these principles in real-world scenarios.
+
+
+
+## Relationship Between SOLID Principles and Design Patterns
+
+1. Single Responsibility Principle (SRP)
+SRP: Each class should have one responsibility (or reason to change).
+Design Pattern Example: **Strategy Pattern.**
+ The Strategy Pattern allows you to separate different behaviors (strategies) into separate classes, each with a single responsibility. This way, a class doesn't have to handle multiple behaviors.
+ Example: Instead of having one class manage different sorting algorithms, each algorithm can be in its own class, and the main class can just choose which strategy (algorithm) to use.
+2. Open/Closed Principle (OCP)
+OCP: Classes should be open for extension but closed for modification.
+Design Pattern Example: Decorator Pattern.
+The Decorator Pattern allows you to add new behavior to objects without changing their code. This follows OCP because you're extending the functionality without modifying the original class.
+Example: If you have a class that handles basic payment, you can add functionality like discounts or taxes using decorators without modifying the original payment class.
+3. Liskov Substitution Principle (LSP)
+LSP: Subtypes should be replaceable for their base types without affecting correctness.
+Design Pattern Example: Factory Pattern.
+The Factory Pattern creates objects without specifying the exact class of the object that will be created. The key idea is that all objects returned from the factory are interchangeable and can be used as the same base type.
+Example: A factory might create either a Car or a Truck object. Both can be treated as Vehicle objects because they follow the same interface, ensuring Liskov Substitution.
+4. Interface Segregation Principle (ISP)
+ISP: Clients should not be forced to depend on interfaces they do not use.
+Design Pattern Example: Adapter Pattern.
+The Adapter Pattern helps in making a class conform to an interface that clients expect, without forcing them to use unnecessary methods.
+Example: If a class has a large interface with many methods, you can use an adapter to create smaller, more specialized interfaces for clients to interact with, ensuring they only use what they need.
+5. Dependency Inversion Principle (DIP)
+DIP: High-level modules should not depend on low-level modules. Both should depend on abstractions.
+Design Pattern Example: Dependency Injection.
+Dependency Injection is a pattern where you inject the dependencies into a class instead of letting the class create them. This promotes DIP because the high-level class depends on an abstraction (interface), not on low-level details.
+Example: Instead of creating a Database instance directly in your Service class, you inject a Database dependency, allowing you to easily swap it out with a different database implementation without modifying the Service class.
+Summary of the Relationship
+SOLID principles are guidelines for creating flexible and maintainable object-oriented code.
+Design Patterns are solutions to common design problems that help implement these guidelines in practice.
+Many design patterns are specifically created to help apply SOLID principles. They solve common issues like loose coupling, extensibility, and separation of concerns while adhering to SOLID principles.
+So, when you use design patterns, you’re often implementing SOLID principles to create better software!

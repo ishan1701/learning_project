@@ -369,6 +369,7 @@ bill_object.calculate_total()
 # Liskov Substitution Principle (LSP)
 
 The child class should not change the expected behavior of the base class. Lets take an example
+The subclasses should extend their base classes without changing their behavior.
 
 ```
 class Bird:
@@ -603,8 +604,8 @@ For eample the below code
 ```angular2html
 
 class BillProcessor:
-    def __init__(self):
-        self.bill = Electricity()  # ❌ Directly depends on a concrete class
+    def __init__(self, bill:Electricity): consider the bill as a concrete class
+        self.bill = bill  # ❌ Directly depends on a concrete class
 
     def process(self):
         return self.bill.calculate_total()

@@ -1,0 +1,18 @@
+In this exercise you will create a simplified, parameterized version of the Factory Method pattern for creating different types of vehicles.
+
+
+
+The factory will receive a parameter to determine which vehicle type to create.
+
+Your Task is to:
+Create a Vehicle Factory that can create different types of vehicles (e.g., Car, Motorcycle, Bicycle) based on the input parameter.
+Make sure that the input parameters are defined as an enumeration.
+
+Create an abstract Vehicle class.
+
+Create concrete vehicle classes, e.g., Car, Motorcycle, and Bicycle, that inherit from the Vehicle class.
+
+Create a VehicleFactory class with a create_vehicle method that takes a parameter to determine which type of vehicle to create.
+
+Test the VehicleFactory class to create different types of vehicles.
+

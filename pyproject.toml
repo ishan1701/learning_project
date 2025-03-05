@@ -50,6 +50,8 @@ webencodings="^0.5.1"
 apache-airflow="2.9.0"
 pylint="3.3.4"
 fpdf="1.7.2"
+dbt-core="1.9.2"
+dbt-postgres="1.9.0"
 
 [build-system]
 requires = ["poetry-core"]

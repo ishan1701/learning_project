@@ -31,5 +31,8 @@ CONTAINER ID   IMAGE       COMMAND     CREATED          STATUS          PORTS   
 
 7. Time to create our own images
 
+8. docker run with port mapping
+   
+
 
 

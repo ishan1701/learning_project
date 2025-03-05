@@ -1,6 +1,7 @@
 from shapes import Shape
 from point import Point
 from math import pi
+from dataclasses import dataclass
 
 
 class Circle(Shape):
@@ -8,6 +9,7 @@ class Circle(Shape):
         self._first_point = first_point
         self._second_point = second_point
         super().__init__(shape_type='circle')
+
 
     @property
     def first_point(self) -> Point:
@@ -30,7 +32,7 @@ class Circle(Shape):
         return 2 * pi * (self.radius ** 2)
 
     def if_point_lies(self, point: Point):
-        point_distance_frm_center = Point.distance(self._first_point, point)
+        point_distance_frm_center = Point.distance(self.first_point, point)
 
         if point_distance_frm_center < self.radius:
             return True

@@ -1,6 +1,11 @@
+https://www.youtube.com/watch?v=XQNv0SRB0OM&t=2186s
+
 # Another good tutorial
 
 https://www.youtube.com/watch?v=pg19Z8LL06w
+
+
+
 
 1. Create a docker image with the Dockerfile
    docker build -t 1st-image:latest .

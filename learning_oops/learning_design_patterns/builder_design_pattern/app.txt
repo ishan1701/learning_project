@@ -1,0 +1,35 @@
+You’re tasked with designing a system to construct different types of computers
+ (GamingPC, Workstation, Server) . Each computer type has common components
+ (e.g., CPU, RAM, storage), but the specific configurations differ:
+
+GamingPC: High-end GPU, RGB lighting, fast SSD.
+Workstation: Powerful CPU, lots of RAM, large HDD.
+Server: Dual CPUs, ECC RAM, RAID storage.
+
+
+nouns- computers
+(GamingPC, Workstation, Server)
+
+CPU, RAM and Storage- these are also nouns and the classes should be created for this.
+
+Here I need to build a computer which multiple other components.
+
+step 0: create the components class
+a. create CPU , RAM, Storage class its better to have these classes as abstract to satisfy the D of SOLID.
+
+step 1: define the final product which needs to be created.
+
+a. Here I want to use factory design pattern to create the computer. Hence I will define an interface named Computer.
+b. Then I will defined the cncreate classes each for gamingpc, Workstation and Server
+
+Step 2: Builder abstract class which includes the abstract method to add components for the computer
+
+a. Here i will create a Builer class names ComputerBuilder with abstract methods for adding the components
+b. Create the concrete Builder classes for each type of computers
+
+Step 3: Create a factory which returns based on the Computer type
+
+Step 4: Create a Director class.
+a. This class will have the ComputerBuilder as the member
+b. This class will have the build methos to build the computer.
+

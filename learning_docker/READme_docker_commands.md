@@ -185,5 +185,6 @@ A running instance of an image is called as container. Once image can be run on 
 increase the performance of an application.
 
 
-
+things to read
+https://medium.com/apache-airflow/what-we-learned-after-running-airflow-on-kubernetes-for-2-years-0537b157acfd
 

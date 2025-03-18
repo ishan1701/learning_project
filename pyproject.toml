@@ -52,6 +52,11 @@ pylint="3.3.4"
 fpdf="1.7.2"
 dbt-core="1.9.2"
 dbt-postgres="1.9.0"
+dbt-duckdb="1.9.2"
+dbt-snowflake = "^1.9.2"
+duckdb = "^1.2.1"
+pytest = "8.3.5"
+pytest-mock = "^3.14.0"
 
 [build-system]
 requires = ["poetry-core"]

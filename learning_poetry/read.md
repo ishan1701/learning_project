@@ -57,3 +57,5 @@
     ```pyproject.toml changed significantly since poetry.lock was last generated. Run `poetry lock [--no-update]` to fix the lock file.```
 run the below command to solve it
 ```poetry lock --no-update```
+15. poetry add pytest-mock 
+    This command will add new package. Run after python shell.

@@ -62,3 +62,50 @@ The below uml is the combination of factory and builder.
 +----------------------------+           +----------------+   +----------------+   +----------------+
 ```
 
+**As the number of components grows or their specificity varies across products 
+(e.g., Car, Bike, Ship), cramming everything into build_extras() becomes 
+messy and violates the Single Responsibility Principle. Making Director an abstract
+class with concrete subclasses for each ConcreteBuilder is a solid approach to address
+this—it allows each Director to tailor the construction process to its specific product’s needs**
+
+```angular2html
++----------------+       +---------------------+
+|    Director    | (Abstract)                |
++----------------+       +---------------------+
+| - builder      |<>---->|      Builder        | (Abstract)
+| + set_builder(builder: Builder)             |
+| + construct(): Vehicle                      |
++----------------+       +---------------------+
+          ^              | + buildFrame()      |
+          |              | + buildEngine()     |
+          |              | + getResult(): Vehicle |
+          |              +---------------------+
+          |                      ^
+          |                      |
++----------------+   +----------------+   +----------------+
+|   CarDirector  |   |  BikeDirector |   |  ShipDirector  |
++----------------+   +----------------+   +----------------+
+| + construct()  |   | + construct()  |   | + construct()  |
++----------------+   +----------------+   +----------------+
+          |                  |                  |
+          v                  v                  v
++----------------+   +----------------+   +----------------+
+|   CarBuilder  |   |  BikeBuilder  |   |  ShipBuilder  |
++----------------+   +----------------+   +----------------+
+| + buildFrame()|   | + buildFrame()|   | + buildHull()  |
+| + buildEngine()|  | + buildEngine()|  | + buildEngine()|
+| + buildDoors()|   | + buildHandlebars()| + buildDeck()|
+| + getResult() |   | + getResult() |   | + getResult() |
++----------------+   +----------------+   +----------------+
+          |                  |                  |
+          v                  v                  v
++----------------+   +----------------+   +----------------+
+|      Vehicle  |<|--|      Car       |   |      Bike      |   |      Ship      |
+| (Interface)   |    +----------------+   +----------------+   +----------------+
+| + get_details()    | - frame        |   | - frame        |   | - hull         |
+|                    | - engine       |   | - engine       |   | - engine       |
+|                    | - doors        |   | - handlebars   |   | - deck         |
+|                    | + get_details()|   | + get_details()|  | + get_details()|
++----------------+   +----------------+   +----------------+   +----------------+
+```
+

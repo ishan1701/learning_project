@@ -8,7 +8,7 @@ class Storage(ABC):
         self.capacity = capacity
 
     @abstractmethod
-    def read_data(self, file_path: str) -> bytes:
+    def read_data(self, file_path: str) -> None:
         pass
 
     @abstractmethod

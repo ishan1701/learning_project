@@ -1,5 +1,5 @@
-from computer_builder import ComputerBuilder
-from gaming_computer_builder import GamingComputerBuilder
+from builders.computer_builder import ComputerBuilder
+from builders.gaming_computer_builder import GamingComputerBuilder
 
 
 class ComputerBuilderFactory:

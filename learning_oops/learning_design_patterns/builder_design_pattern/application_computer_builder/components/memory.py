@@ -19,7 +19,7 @@ class RAM(ABC):
 
 
 class DDR3(RAM):
-    def __init__(self, capacity_in_gb: int, manufacturer: str, type: str, speed_range: int, latency):
+    def __init__(self, capacity_in_gb: int, manufacturer: str, type: str, speed_range: int, latency:float) -> None:
         super().__init__(capacity_in_gb=capacity_in_gb, manufacturer=manufacturer, type=type, speed_range=speed_range)
         self.latency = latency
 

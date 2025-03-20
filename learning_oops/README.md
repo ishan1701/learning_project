@@ -16,6 +16,11 @@ p2 = Person("Bob", -5)    # Raises AssertionError: Age must be positive
 ```
 2. class level attribute  inside the class
 
+Use the class level attribute to define some contants which should be common in all the subclasses.
+However if the value can be specific for the objects of the child classes, its better to define as instance member.
+
+Use case: When the attribute is a constant or default shared by all instances.
+
 3. class method
 
 Scenario: I have a class which represents an Item. Now the requirement is to read the file and create the object by reading line by line.

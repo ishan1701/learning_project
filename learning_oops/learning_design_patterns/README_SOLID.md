@@ -728,3 +728,10 @@ SOLID principles are guidelines for creating flexible and maintainable object-or
 Design Patterns are solutions to common design problems that help implement these guidelines in practice.
 Many design patterns are specifically created to help apply SOLID principles. They solve common issues like loose coupling, extensibility, and separation of concerns while adhering to SOLID principles.
 So, when you use design patterns, you’re often implementing SOLID principles to create better software!
+
+
+
+## when to use the Factory design pattern
+1. When creating an object involves multiple steps, conditions, or dependencies (e.g., setting up defaults, validating inputs).
+2. When the client specifies a type (e.g., "dell", "logitech") and the system decides which class to instantiate.
+3. 

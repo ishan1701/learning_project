@@ -22,7 +22,6 @@ class IntelCPU(CPU):
     def __init__(self, model: str, core: int, cache_mb: int):
         super().__init__(model, core, cache_mb)
 
-    @abstractmethod
     def get_speed(self, number_of_windows_opened:int) -> float:
         if number_of_windows_opened > 10:
             return self.core * 1.43

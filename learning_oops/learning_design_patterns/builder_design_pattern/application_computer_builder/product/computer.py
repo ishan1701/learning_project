@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from components.memory import RAM
 from components.storage import Storage
 from components.processing_unit import CPU
+from components.keyboard import Keyboard
 
 class Computer(ABC):
     def __init__(self, manufacturer: str, model: str, memory:RAM, storage: Storage, processing_unit: CPU, os:str):
@@ -12,6 +13,9 @@ class Computer(ABC):
         self.storage = storage
         self.processing_unit = processing_unit
         self.os = os
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}'
 
     @abstractmethod
     def is_graphics_card_supported(self) -> bool:
@@ -32,9 +36,10 @@ class Computer(ABC):
             print("OS not supported.")
 
 class GamingComputer(Computer):
-    def __init__(self,manufacturer: str, model: str, memory:RAM, storage: Storage, processing_unit: CPU, os:str, graphics_card_memory:int):
+    def __init__(self,manufacturer: str, model: str, memory:RAM, storage: Storage, processing_unit: CPU, os:str, graphics_card_memory:int, keyboard:Keyboard):
         super().__init__(manufacturer=manufacturer, model=model, memory=memory,storage=storage,processing_unit=processing_unit,os=os)
         self.graphics_card_memory = graphics_card_memory
+        self.keyboard = keyboard
 
     def is_graphics_card_supported(self) -> bool:
         return True

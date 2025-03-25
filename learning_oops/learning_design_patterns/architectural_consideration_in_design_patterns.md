@@ -108,4 +108,28 @@ this—it allows each Director to tailor the construction process to its specifi
 |                    | + get_details()|   | + get_details()|  | + get_details()|
 +----------------+   +----------------+   +----------------+   +----------------+
 ```
+![img.png](images/img_2.png)
+
+## strategy design pattern
+
+Below are the component part of SDP.
+
+* Context: Holds a reference to a Strategy and delegates work to it.
+* Strategy Interface: Defines the contract (e.g., execute()).
+* Concrete Strategies: Implement specific behaviors.
+
+
+![img.png](images/img_3.png)
+
+i can also combine factory and strategy design patterns.
+
+Factory: Decides what to create (e.g., which strategy object) without exposing creation logic.
+Strategy: Defines how behavior is executed, allowing runtime swaps.
+![img.png](images/img_4.png)
+
+**below is the example**
+
+Pianos: Factory creates piano types (P-145B, DP-32), 
+        Strategy switches playing styles (classical vs. jazz).
+
 

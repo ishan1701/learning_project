@@ -1,0 +1,8 @@
+Here I am  tasked with designing a system to format text in different styles for a publishing application.
+The system should support multiple formatting strategies (e.g., uppercase, title case, lowercase) and allow the client to
+switch between them dynamically at runtime. The formatting strategy should be applied to a given input string, and the system must be extensible to add new formatting styles later.
+
+The goal is to use the Strategy pattern to:
+
+Encapsulate each formatting algorithm as a separate strategy.
+Allow the client to choose or change the formatting style without modifying the core logic.

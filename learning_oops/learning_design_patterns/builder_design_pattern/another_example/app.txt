@@ -1,0 +1,27 @@
+Working with the Builder Pattern Exercise
+In this exercise you will implement the Builder Design Pattern for
+constructing a customized computer system.
+
+Task: Implement the Builder Design Pattern to create a custom computer system.
+
+Instructions:
+
+Define a class Computer with attributes: processor, memory, storage,
+graphics_card, operating_system, and extras.
+
+Initialize these attributes in the __init__ method.
+
+Create an abstract class ComputerBuilder with the following abstract methods:
+
+add_processor, add_memory, add_storage, add_graphics_card, add_operating_system, and add_extras.
+
+Implement a concrete class CustomComputerBuilder that inherits from ComputerBuilder.
+
+This class should override the abstract methods and set the attributes of a Computer object.
+
+Create a class ComputerDirector that takes a ComputerBuilder instance and has a
+method build_computer that calls the add_* methods of the ComputerBuilder in the desired order.
+
+Instantiate a CustomComputerBuilder, pass it to the ComputerDirector, and create a computer using the build_computer method.
+
+Test your code.

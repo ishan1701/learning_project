@@ -1,33 +1,38 @@
-def filter_odd_numbers(numbers):
+from typing import Callable, Generator, Any, Iterable, Union, TypeVar, Optional, Tuple
+
+T = TypeVar('T')
+U = TypeVar('U')
+
+
+def filter_odd_numbers(numbers: Iterable[int]) -> list[int]:
     """Filters odd numbers from a sequence of numbers."""
-    result = []
+    result: list[int] = list()
     for num in numbers:
         if num % 2 == 0:
             result.append(num)
     return result
 
 
-def square_numbers(numbers):
+def square_numbers(numbers: Union[Iterable[int] | Iterable[float]]) -> list[int | float]:
     """Square numbers in a sequence."""
-    result = []
+    result: list[int | float] = list()
     for num in numbers:
-        result.append(num**2)
+        result.append(num ** 2)
     return result
 
 
-def count_chars(words):
+def count_chars(words: Iterable[str]) -> list[int]:
     """Counts the number of characters in a sequence of words."""
-    result = []
+    result: list[int] = list()
     for word in words:
         result.append(len(word))
     return result
 
 
 def process_data(
-    data,
-    filter_func=None,
-    process_func=None,
-):
+        data,
+        filter_func: Callable[[T], T] | None = None,
+        process_func: Callable[[T | U], U] | None = None):  # process_func: Union[Callable[[T | U], U], None] = None): before 3.10 version
     """Applies filter_func and process_func on a data sequence."""
     if filter_func:
         data = filter_func(data)
@@ -49,3 +54,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# the main key takeaway of this exercise is to learn about the typing module
+# after python 3.10 | can be used in place of Union. Its also true using list rather List from typing or dict rather using Dict from typing
+# the return type should be very precise, but the args should be broad. What it means in the above examples, the return type MUST be precise to list[whatever] but the arg type SHOULD be Iterable

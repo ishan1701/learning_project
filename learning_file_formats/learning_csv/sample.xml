@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <product id="001" name="Laptop" price="999.99" stock="50"/>
+    <product id="002" name="Smartphone" price="499.99" stock="200"/>
+    <product id="003" name="Tablet" price="299.99" stock="150"/>
+    <product id="004" name="Smartwatch" price="199.99" stock="80"/>
+</catalog>

@@ -1,0 +1,72 @@
+[
+    {
+        "ID":1,
+        "Name":"Alice",
+        "Age":25,
+        "City":"New York",
+        "Salary":55000
+    },
+    {
+        "ID":2,
+        "Name":"Bob",
+        "Age":30,
+        "City":"Los Angeles",
+        "Salary":62000
+    },
+    {
+        "ID":3,
+        "Name":"Charlie",
+        "Age":22,
+        "City":"Chicago",
+        "Salary":48000
+    },
+    {
+        "ID":4,
+        "Name":"David",
+        "Age":27,
+        "City":"Houston",
+        "Salary":75000
+    },
+    {
+        "ID":5,
+        "Name":"Eve",
+        "Age":29,
+        "City":"Phoenix",
+        "Salary":53000
+    },
+    {
+        "ID":6,
+        "Name":"Frank",
+        "Age":35,
+        "City":"Philadelphia",
+        "Salary":68000
+    },
+    {
+        "ID":7,
+        "Name":"Grace",
+        "Age":24,
+        "City":"San Antonio",
+        "Salary":50000
+    },
+    {
+        "ID":8,
+        "Name":"Hank",
+        "Age":28,
+        "City":"San Diego",
+        "Salary":72000
+    },
+    {
+        "ID":9,
+        "Name":"Ivy",
+        "Age":26,
+        "City":"Dallas",
+        "Salary":59000
+    },
+    {
+        "ID":10,
+        "Name":"Jack",
+        "Age":31,
+        "City":"San Jose",
+        "Salary":60000
+    }
+]

@@ -74,8 +74,16 @@ class FileReader:
 # Step 4: Test your implementation
 if __name__ == "__main__":
     # TODO: Create a file reader with a CSVParser
-    reader = FileReader(CSVParser())
+    reader = FileReader(XMLParser())
 
     # TODO: Read a sample CSV file and print the list of dictionaries
-    data = reader.read_file("sample.csv")
+    data = reader.read_file("sample.xml")
+    print(data)
+
+    reader = FileReader(JSONParser())
+    data = reader.read_file("sample.json")
+    print(data)
+
+    reader= XMLParser()
+    data = reader.parse_file('sample.xml')
     print(data)

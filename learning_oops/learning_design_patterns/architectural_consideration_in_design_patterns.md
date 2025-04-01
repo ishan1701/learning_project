@@ -132,4 +132,50 @@ Strategy: Defines how behavior is executed, allowing runtime swaps.
 Pianos: Factory creates piano types (P-145B, DP-32), 
         Strategy switches playing styles (classical vs. jazz).
 
+## Observer design pattern
+
+it is a behavioral design pattern in which an **OBJECT**(termed as Subject)  maintains a list of **DEPENDENTS**(termed as Observers) and notifies them
+automatically when any state changes. It basically used to implement the pub sub or event driven use cases.
+Use this design pattern when the change of state of an object needs to known by the other objects. 
+
+so ideally, multiple publisher can be defined for a multiple system. Then we can have a subscriber which can be notified via multiple publisher.
+
+## Key Components:
+* Subject: Maintains a list of observers and notifies them of changes.
+* Observer: Defines an interface for objects that receive updates from the subject.
+* ConcreteSubject: Implements the subject with specific state and notification logic.
+* ConcreteObserver: Implements the observer interface to react to updates.
+
+
+```angular2html
+
++----------------+       +----------------+
+|   Subject      |<----->|   Observer     |
++----------------+ 1    *+----------------+
+| -observers     |       | +update()      |
+| +attach()      |       +----------------+
+| +detach()      |       
+| +notify()      |       
++----------------+       
+         ^                
+         |                
++----------------+       
+| ConcreteSubject|       
++----------------+       
+| -state         |       
+| +getState()    |       
+| +setState()    |       
++----------------+       
+         ^                
+         |                
++----------------+       
+| ConcreteObserver|       
++----------------+       
+| -observerState  |       
+| +update()       |       
++----------------+
+```
+
+![img.png](images/img_5.png)
+
 

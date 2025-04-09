@@ -1,0 +1,11 @@
+id,name,age,city,email,score,grade,is_active,signup_date,country
+1,Alice,25,New York,alice@example.com,89.5,A,TRUE,2022-01-15,USA
+2,Bob,30,Los Angeles,bob@example.com,75.0,B,FALSE,2022-03-22,USA
+3,Charlie,22,Chicago,charlie@example.com,95.2,A,TRUE,2022-05-10,USA
+4,David,28,Houston,david@example.com,68.4,C,FALSE,2022-02-18,USA
+5,Eve,35,Phoenix,eve@example.com,88.8,B,TRUE,2022-07-05,USA
+6,Frank,27,Philadelphia,frank@example.com,92.3,A,TRUE,2022-01-29,USA
+7,Grace,24,San Diego,grace@example.com,79.0,B,FALSE,2022-06-16,USA
+8,Hank,31,Dallas,hank@example.com,85.1,B,TRUE,2022-08-11,USA
+9,Ivy,26,San Jose,ivy@example.com,90.0,A,FALSE,2022-04-09,USA
+10,Jack,29,Austin,jack@example.com,77.5,C,TRUE,2022-09-30,USA

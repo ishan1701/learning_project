@@ -1,0 +1,12 @@
+ Create a product inventory system where the registered store manageners should be notified whenever the stock level goes below a certain threshold
+
+
+ Nouns
+ 1. Store
+ 2. Manager  this is implmented via factory
+ 3. Stock  create the threshold logic to send type of notifiction to stock manager
+ 4. Item
+ 5. Notification method-- strategy
+ 6. maintain the
+
+

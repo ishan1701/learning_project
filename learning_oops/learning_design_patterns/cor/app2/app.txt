@@ -1,0 +1,23 @@
+Data Error Handler
+Scenario: Handle data processing errors (e.g., from a pipeline) by routing them to specialized handlers. Each handler tries to
+resolve the error, passing it along if it can’t.
+Requirements:
+Chain: RetryHandler → LogHandler → EscalateHandler.
+RetryHandler: Retries if error is transient (e.g., "timeout").
+LogHandler: Logs if error is minor (e.g., "warning").
+EscalateHandler: Escalates if error is critical (e.g., "fatal").
+Input: {"error": "timeout", "details": "Connection failed"}.
+Output: Resolution message or "Unhandled error".
+
+
+
+1. create an abstract class names ErrorHander
+a. define an abstrct method named parse_error
+b. Also initialize the next_handler as None
+c. define the set_next_hander method, which should take
+    next_hander object and upfate the attribute.
+    Also, return next_handler so that other handlers can be added.
+2. Create the concreate classes with the abstract method implemented
+
+3. Finally most important is to create a method in abstract class
+called process_message which will take the message and call the validate method

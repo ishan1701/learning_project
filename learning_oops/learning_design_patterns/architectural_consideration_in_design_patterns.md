@@ -179,3 +179,28 @@ so ideally, multiple publisher can be defined for a multiple system. Then we can
 ![img.png](images/img_5.png)
 
 
+## pipeline design pattern
+
+
+
+
+## chain of responsibility
+CoR is one of the behaviour design patterns where many handlers are created to handle a specific job.
+In case of pipeline pattern, the whole pipeline should be run where all the steps are mandatory.
+But in the case of CoR, the idea is to **Stops at first failure, reporting one error** 
+So in case of authentication, if the first step is failed, the next steps of authentication should be peocessed.
+Hence, this needs to be done via CoR.
+
+Now I want to build a dataframe with multiple steps added, where all the steps should run. In that case,
+its better to use pipeline pattern because all the steps need to run.
+
+
+Practical Implications
+* Pipeline: If your goal is to gather all validation errors (e.g., for a report to send back to a data provider), Pipeline fits because it runs every check. Example: "This record has a null age and an invalid email."
+* CoR: If your goal is to fail fast (e.g., reject bad data in a streaming pipeline without further processing), CoR fits because it stops at the first issue. Example: "This record has a null age—discard it."
+
+![img.png](images/img_6.png)
+
+![img.png](images/img_7.png)
+
+

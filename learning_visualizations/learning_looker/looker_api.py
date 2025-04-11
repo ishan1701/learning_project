@@ -31,7 +31,7 @@ def _get_access_token():
 
 def _get_project_files(access_token, project_id, file):
     # Example API endpoint (e.g., to get all users)
-    API_ENDPOINT = f'{LOOKER_API_URL}/projects/{project_id}/files/file'  # "id": "Brand/brand_lapse_survey_datamart.view.lkml",
+    API_ENDPOINT = f'{LOOKER_API_URL}/projects/{project_id}/files/file'
 
     # Headers including the access token
     headers = {
@@ -58,17 +58,13 @@ def _get_project_files(access_token, project_id, file):
         print(f"Failed to fetch : {response.status_code} - {response.text}")
 
 def _get_looks(access_token):
-    API_ENDPOINT = f'{LOOKER_API_URL}/looks'  # "id": "Brand/brand_lapse_survey_datamart.view.lkml",
+    API_ENDPOINT = f'{LOOKER_API_URL}/looks'
 
     # Headers including the access token
     headers = {
         'Authorization': f'Bearer {access_token}'
     }
 
-    # params = {
-    #     'file_id': 'nl_zip.json',
-    #     # 'fields': 'content'
-    # }
 
     # Make a GET request to the API endpoint
     response = requests.get(API_ENDPOINT, headers=headers)

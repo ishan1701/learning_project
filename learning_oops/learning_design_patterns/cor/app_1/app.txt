@@ -1,0 +1,42 @@
+You’re building a system to approve incoming data records for ingestion into a data warehouse.
+ Each record must pass a series of approval checks,
+ but only one check needs to reject it for the ingestion to be denied.
+ The checks are performed by different team roles (e.g., Data Quality Analyst, Security Officer, Business Owner),
+ and each role can either approve the record or reject it with a reason. If a record passes all checks, it’s approved for
+ ingestion.
+
+Requirements
+Implement the CoR pattern to create a chain of approval handlers.
+Each handler should:
+Check a specific condition.
+Return a rejection reason if the condition fails, stopping the chain.
+Pass the record to the next handler if approved.
+Handle these checks in sequence:
+Data Quality Check: Ensure no critical fields (e.g., id, value) are missing or null.
+Security Check: Ensure the classification field isn’t "confidential" (for simplicity).
+Business Check: Ensure the value field is positive (business rule: no negative values).
+Input: A dictionary representing a data record (e.g., {"id": "123", "value": -10, "classification": "public"}).
+Output: Either None (approved) or a string with the rejection reason (e.g., "Missing field: id")
+
+
+
+Steps
+1. Create a base handler with validate as an abstract method.
+a.  While creating the base hander, init should have initialize the next_hander to None.
+ This attribute should be set later from another member function
+b. an Abstract method should be added which needs to be implemented in the concreate classes later.
+This is core the functionality for the app
+c. finally a method should be created, to set the next handler.
+Important- this method should return the handler which is passed to set the next hander. So that
+the next set_handler method shud take another instance of handler.
+2. Create the concreate handlers which take the data and performs the check like id and value are not missing.
+
+3. Create other concreate handlers with the abstract method implemented
+
+4. create the client code.
+a. create the objects for all the handlers
+b. create a chain of handlers which set_next_method from the base class
+5. Finally and very important-
+a. Now create a process method to run the all the validations
+For me its like a linked list implementation.
+

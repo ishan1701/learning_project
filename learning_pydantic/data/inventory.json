@@ -1,0 +1,7 @@
+[
+    {"item_id": "A123", "name": "laptop", "price": 799.99, "quantity": 10, "category": "Electronics"},
+    {"item_id": "B456", "name": "t-shirt", "price": 19.99, "quantity": 50, "category": "Clothing"},
+    {"item_id": "C789", "name": "novel", "price": 14.99, "quantity": 0, "category": "Books"},
+    {"item_id": "D@01", "name": "apple", "price": 0.5, "quantity": 100, "category": "Food"},
+    {"item_id": "E234", "name": "headphones", "price": 1200, "quantity": 5, "category": "Electronics"}
+]

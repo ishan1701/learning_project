@@ -8,9 +8,8 @@ from ops_config import load_op_job_configs
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-# env='dev'
-# CONFIG_BUCKET='-'.join(['jetkwy-de-datalake-operations',env])
-env = os.environ.get('JET_ENVIRONMENT')
+
+env = os.environ.get('')
 CONFIG_BUCKET = '-'.join([os.environ.get('OPERATION_CONFIG_BUCKET'), env])
 
 

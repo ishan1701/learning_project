@@ -32,6 +32,47 @@ These are the custom validations. APART FROM FIELD  validations defined while in
 ```
 
 5. nested models
+```console
+from pydantic import Field, field_validator, model_validator, HttpUrl, model_serializer, BaseModel
+from enum import Enum
+
+
+class AppEnvironment(Enum):
+    development = "development"
+    production = "production"
+    qa = 'qa'
+
+
+class DatabaseConfig(BaseModel):
+    '''
+     Database config model. It is based on the inouts.yaml
+    '''
+    host: str = Field(max_length=50)
+    port: int = Field(ge=1, le=65535)
+    name: str = Field(max_length=50)
+    username: str = Field(max_length=50)
+
+
+class APIModel(BaseModel):
+    '''
+    Model for APIs
+    '''
+    name: str = Field(max_length=50)
+    url: HttpUrl
+    enabled: bool
+
+
+class APIConfig(BaseModel):
+    app_name: str = Field(max_length=50)
+    environment: AppEnvironment = Field(default=AppEnvironment.development)
+    database: DatabaseConfig
+    api_endpoints: list[APIModel]
+
+
+
+
+```
+This is an example of the nested models
 
 6. serialization
 

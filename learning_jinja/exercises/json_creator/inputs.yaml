@@ -1,0 +1,15 @@
+app_config:
+  app_name: MyApp
+  environment: production
+  database:
+    host: localhost
+    port: 5432
+    name: mydb
+    username: admin
+  api_endpoints:
+    - name: users
+      url: https://api.example.com/users
+      enabled: true
+    - name: orders
+      url: https://api.example.com/orders
+      enabled: false

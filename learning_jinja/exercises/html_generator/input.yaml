@@ -1,0 +1,11 @@
+title: User Activity Report
+users:
+  - name: Alice
+    role: Admin
+    is_active: True
+  - name: Bob
+    role: Editor
+    is_active: False
+  - name: Chalie
+    role: Viewer
+    is_active: True

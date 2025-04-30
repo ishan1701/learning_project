@@ -26,3 +26,31 @@ def test_function_name():
 
 ## how to write unit stest for a  class and its methods?
 
+# Some concepts
+
+## pytest.fixtures
+This is for the function based test. where i need to set something for all the test. Something like tearup.
+
+
+## conftest.py
+
+
+## marking and parameterizing
+```
+@pytest.mark.parametrize('width, height, expected_area', [(2, 2, 4), (5, 6, 30)])
+def test_rectangle_area(width, height, expected_area):
+    assert Rectangle(width=width, height=height).area() == expected_area
+
+
+@pytest.mark.skip
+def test_rectangle_center(rectangle):
+    pass
+```
+
+Marking means is to mark the tests.
+1. skip
+2. parameterized. This is more useful
+3. slow
+
+## mocking
+

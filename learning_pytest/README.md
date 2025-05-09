@@ -54,3 +54,10 @@ Marking means is to mark the tests.
 
 ## mocking
 
+
+
+## pytest --cov
+It will show the test coverage for the source. It should be 100%.
+
+
+## coverage html

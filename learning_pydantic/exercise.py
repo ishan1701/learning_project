@@ -31,8 +31,17 @@ import json
 # 2. process the json file
 # 3. main function
 
-from pydantic import (BaseModel, Field, validator, field_validator,
-                      field_serializer, model_validator, model_serializer, SecretStr, ValidationError)
+from pydantic import (
+    BaseModel,
+    Field,
+    validator,
+    field_validator,
+    field_serializer,
+    model_validator,
+    model_serializer,
+    SecretStr,
+    ValidationError,
+)
 import re
 from pathlib import Path
 
@@ -44,31 +53,31 @@ class Item(BaseModel):
     quantity: int = Field(ge=0)
     category: str = Field(default=None)
 
-    @field_validator('name')
+    @field_validator("name")
     def validate_name(cls, value):
         if not re.match(f"[A-Za-z0-9]+$", value):
-            raise ValueError('item_id must be alphanumeric')
+            raise ValueError("item_id must be alphanumeric")
 
         return value
 
-    @field_validator('price')
+    @field_validator("price")
     def validate_price(cls, value):
-        print('inside quantity')
+        print("inside quantity")
         if value == 0:
-            raise ValueError('price must be greater than 0')
+            raise ValueError("price must be greater than 0")
         return value
 
-    @field_validator('quantity')
+    @field_validator("quantity")
     def validate_quantity(cls, value):
 
         if value == 0:
-            print('th3e value cant be zero')
+            print("th3e value cant be zero")
         return value
 
-    @model_validator(mode='after')
-    def validate_mode(cls, value: 'Item'):
-        if value.category == 'Electronics' and value.price < 1000:
-            raise ValueError('price must be greater than 1000 for Electronics')
+    @model_validator(mode="after")
+    def validate_mode(cls, value: "Item"):
+        if value.category == "Electronics" and value.price < 1000:
+            raise ValueError("price must be greater than 1000 for Electronics")
         return value
 
 
@@ -80,11 +89,13 @@ def process_inventory_frm_json(json_file_path: Path) -> tuple[float, list[Item]]
 
     for item in data:
         try:
-            validated_item = Item(item_id=item['item_id'],
-                                  name=item['name'],
-                                  price=item['price'],
-                                  quantity=item['quantity'],
-                                  category=item['category'])
+            validated_item = Item(
+                item_id=item["item_id"],
+                name=item["name"],
+                price=item["price"],
+                quantity=item["quantity"],
+                category=item["category"],
+            )
             # Item.model_validate(validated_item,strict=True)
             valid_items.append(item)
             total_price += validated_item.price * validated_item.quantity
@@ -96,12 +107,12 @@ def process_inventory_frm_json(json_file_path: Path) -> tuple[float, list[Item]]
 
 
 def main():
-    json_file_path: Path = Path(__file__).parent.joinpath('data', 'inventory.json')
+    json_file_path: Path = Path(__file__).parent.joinpath("data", "inventory.json")
     total_price, valid_items = process_inventory_frm_json(json_file_path)
     print(total_price)
     for item in valid_items:
         print(item)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

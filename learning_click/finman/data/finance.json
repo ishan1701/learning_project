@@ -1,0 +1,19 @@
+{
+    "expense": [
+        {
+            "id": 2,
+            "amount": 14.15,
+            "category": "car",
+            "note": "Delhi",
+            "date": "2025-05-13 12:45:32"
+        }
+    ],
+    "budget": [
+        {
+            "food": 200.0
+        },
+        {
+            "car": 500.0
+        }
+    ]
+}

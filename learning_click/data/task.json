@@ -1,0 +1,14 @@
+{
+    "tasks": [
+        {
+            "description": "do_landary",
+            "priority": "high",
+            "completed": false
+        },
+        {
+            "description": "do_dishers",
+            "priority": "high",
+            "completed": true
+        }
+    ]
+}

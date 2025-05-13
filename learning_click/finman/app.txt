@@ -1,0 +1,87 @@
+Below is a new exercise to help you practice using Click in Python to build a command-line interface (CLI). This exercise focuses on creating a Personal Finance Manager CLI called finman,
+which allows users to manage expenses and budgets. The exercise incorporates groups, subcommands, custom command names, context usage, file storage, and testing with mocking for file operations.
+It builds on concepts from your previous exercise but introduces new challenges like handling multiple data types, filtering, and summarizing data.
+
+Exercise: Build a Personal Finance Manager CLI
+Objective: Create a CLI tool named finman for tracking expenses and budgets.
+The tool should allow users to add expenses, set budgets, list expenses, and summarize financial status, with data stored in a JSON file and support for a verbose mode.
+
+Requirements:
+
+Group Structure:
+Create a main group named finman (custom name).
+Include two subgroups:
+expense: For managing expenses.
+budget: For managing budgets.
+File Storage:
+Store data in a JSON file at data/finance.json (use pathlib.Path).
+The file should contain:
+A list of expenses (e.g., {"id": 1, "amount": 50.0, "category": "Food", "date": "2025-05-13", "note": "Lunch"}).
+A dictionary of budgets (e.g., {"Food": 200.0, "Transport": 100.0}).
+Example structure:
+json
+
+Copy
+{
+  "expenses": [
+    {"id": 1, "amount": 50.0, "category": "Food", "date": "2025-05-13", "note": "Lunch"}
+  ],
+  "budgets": {
+    "Food": 200.0,
+    "Transport": 100.0
+  }
+}
+Options and Context:
+Add a --verbose flag at the finman group level to enable detailed output (e.g., extra details about operations).
+Store the verbose state and data (expenses, budgets) in ctx.obj for access by subcommands.
+Load data from data/finance.json in the finman group, or initialize empty data if the file doesn’t exist.
+
+
+Subcommands:
+Under the expense subgroup:
+add-expense (custom name): Adds an expense with arguments for amount (float), category (string), and optional --note (string). Assign a unique id (incrementing integer)
+and use the current date (2025-05-13 for consistency).
+list-expenses (custom name): Lists all expenses, optionally filtered by --category (string). Show id, amount, category, date, and note.
+delete-expense (custom name): Deletes an expense by id (integer).
+Under the budget subgroup:
+set-budget (custom name): Sets a budget for a category (string) with an amount (float).
+view-budget (custom name): Displays budgets for all categories or a specific --category.
+
+
+At the top-level group:
+summary: Shows total expenses, total budget, and remaining budget (total budget minus total expenses), with verbose mode showing per-category breakdowns.
+
+Functionality:
+Expense Management:
+add-expense appends to the expenses list and saves to the file.
+list-expenses displays expenses in a formatted way (e.g., [ID: 1] $50.00 - Food (2025-05-13)).
+delete-expense removes an expense by id and updates the file.
+
+
+Budget Management:
+set-budget updates or adds a category’s budget.
+view-budget shows budget amounts.
+Summary:
+Calculate total expenses (sum of all expense amounts).
+Calculate total budget (sum of all budget amounts).
+Calculate remaining budget (total budget minus total expenses).
+In verbose mode, show expenses and remaining budget per category.
+Error Handling:
+Handle invalid id in delete-expense (e.g., non-existent ID).
+Handle file read/write errors (e.g., json.JSONDecodeError, IOError).
+Validate amount in add-expense and set-budget (must be positive).
+Testing:
+Write test cases using click.testing.CliRunner and unittest.mock to mock file operations (pathlib.Path.exists, builtins.open).
+Avoid using yield or complex fixtures (per your preference).
+Test at least:
+Adding an expense with and without verbose mode.
+Listing expenses with and without a category filter.
+Deleting a valid and invalid expense ID.
+Setting and viewing a budget.
+Summary output with verbose mode.
+File read error (e.g., invalid JSON).
+Verify output, exit codes, and file contents.
+Bonus (Optional):
+Add a --date option to add-expense to override the default date.
+Allow list-expenses to filter by date range (e.g., --start-date, --end-date).
+Add a command to clear all expenses or budgets.

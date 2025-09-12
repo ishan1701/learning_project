@@ -7,13 +7,16 @@ class TextFormatter(ABC):
     def format(self, text: str) -> str:
         pass
 
+
 class UpperTextFormatter(TextFormatter):
     def format(self, text: str) -> str:
         return text.upper()
 
+
 class LowerTextFormatter(TextFormatter):
     def format(self, text: str) -> str:
         return text.lower()
+
 
 class TitleTextFormatter(TextFormatter):
     def format(self, text: str) -> str:

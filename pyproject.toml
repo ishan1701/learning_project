@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "this is a learning project"
 authors = ["Ishan Kumar <ishan1701@gmail.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
@@ -62,8 +63,9 @@ pyspark = "^3.5.5"
 cookiecutter = "^2.6.0"
 pydantic = "^2.11.3"
 jinja2 = "^3.1.6"
-black = "^25.1.0"
 click = "^8.2.0"
+pre-commit = "^4.3.0"
+black = "^25.1.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -71,3 +73,38 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 learning_project = "learning_project.main:cli"
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 88
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "UP", # pyupgrade
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "T201", # print-statements
+]
+ignore = []
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+skip-string-normalization = false
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+  | Taskfile\.yaml
+  | requirements\.txt
+  | README\.md
+  | poetry\.lock
+  | pyproject\.toml
+)/
+'''

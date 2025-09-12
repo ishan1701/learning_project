@@ -35,7 +35,6 @@ async def main():
     await log_task
     print("Logging completed.")
 
-
     download_result = await download_task
     print(download_result)
 
@@ -43,7 +42,5 @@ async def main():
     sync_function()
 
 
-if __name__ == '__main__':
-
-
+if __name__ == "__main__":
     asyncio.run(main())

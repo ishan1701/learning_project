@@ -14,7 +14,14 @@ class Item(ABC):
 
 
 class Fruit(Item):
-    def __init__(self, name: str, color: str, growing_season: str, classification: str, price: float):
+    def __init__(
+        self,
+        name: str,
+        color: str,
+        growing_season: str,
+        classification: str,
+        price: float,
+    ):
         super().__init__(name, price)
         self.color = color
         self.growing_season = growing_season

@@ -8,10 +8,10 @@ class PersonWithPrimitiveDefaultVal:
 
 
 def _person_with_default_val():
-    p1 = PersonWithPrimitiveDefaultVal('John')
+    p1 = PersonWithPrimitiveDefaultVal("John")
     print(p1)  # Person(name='John', age='12')
 
-    p2 = PersonWithPrimitiveDefaultVal('Ishan')
+    p2 = PersonWithPrimitiveDefaultVal("Ishan")
     print(p2)
 
     print(p1.__dict__)  # {'name': 'John', 'age': 13}
@@ -28,7 +28,7 @@ class PersonFrozen:
 
 
 def _frozen_example():
-    p1 = PersonFrozen('p1', 13)
+    p1 = PersonFrozen("p1", 13)
     print(p1)
     # p1.age=12  #this will throw an error
 
@@ -41,7 +41,7 @@ class PersonWithKW:
 
 def _kw_only_example():
     # p2 = PersonWithKW('p3',123) this will throw an error
-    p2 = PersonWithKW(name='p3', age=123)  # need to provide the name= and age=
+    p2 = PersonWithKW(name="p3", age=123)  # need to provide the name= and age=
     print(p2)
 
 
@@ -55,20 +55,26 @@ class PersonWithComplexDefaultVal:
     age: int
     email_address: list[str] = field(default_factory=list)
     custom_generated_variable: list[int] = field(default_factory=generate_list)
-    making_init_false: list[int] = field(init=False, default_factory=generate_list) #in this case the I cnnot assign the value to this vaiable
+    making_init_false: list[int] = field(
+        init=False, default_factory=generate_list
+    )  # in this case the I cnnot assign the value to this vaiable
 
 
 def _person_with_complex_default_val():
-    p1 = PersonWithComplexDefaultVal(name='p1', age=13, email_address=['ishan'])
+    p1 = PersonWithComplexDefaultVal(name="p1", age=13, email_address=["ishan"])
     print(p1)
-    p2 = PersonWithComplexDefaultVal(name='p3', age=13, email_address=['ishan'],
-                                     custom_generated_variable=[101, 9109, 2, 3])
+    p2 = PersonWithComplexDefaultVal(
+        name="p3",
+        age=13,
+        email_address=["ishan"],
+        custom_generated_variable=[101, 9109, 2, 3],
+    )
     print(p2)
     # p3 = PersonWithComplexDefaultVal(name='p3', age=13, email_address=['ishan'], making_init_false=[22, 2])  ##this will throw an error
     # print(p3)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     _person_with_default_val()
     _frozen_example()
     _kw_only_example()

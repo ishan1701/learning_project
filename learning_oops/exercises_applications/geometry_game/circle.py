@@ -1,15 +1,15 @@
-from shapes import Shape
-from point import Point
-from math import pi
 from dataclasses import dataclass
+from math import pi
+
+from point import Point
+from shapes import Shape
 
 
 class Circle(Shape):
     def __init__(self, first_point: Point, second_point: Point):
         self._first_point = first_point
         self._second_point = second_point
-        super().__init__(shape_type='circle')
-
+        super().__init__(shape_type="circle")
 
     @property
     def first_point(self) -> Point:
@@ -25,11 +25,11 @@ class Circle(Shape):
 
     @property
     def area(self) -> float:
-        return pi * (self.radius ** 2)
+        return pi * (self.radius**2)
 
     @property
     def perimeter(self) -> float:
-        return 2 * pi * (self.radius ** 2)
+        return 2 * pi * (self.radius**2)
 
     def if_point_lies(self, point: Point):
         point_distance_frm_center = Point.distance(self.first_point, point)
@@ -40,7 +40,7 @@ class Circle(Shape):
             return False
 
     def create_shape(self):
-        print(f'creating shape for circle: {self}')
+        print(f"creating shape for circle: {self}")
 
     def __repr__(self):
-        return f'Circle created with radius {self.radius} with area {self.area})'
+        return f"Circle created with radius {self.radius} with area {self.area})"

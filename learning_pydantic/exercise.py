@@ -2,6 +2,12 @@
 # The exercise focuses on using Pydantic’s core features, including field constraints, custom validators, and serialization, and avoids theoretical explanations to keep it hands-on.
 # You’ll create a Pydantic model, add validation logic, and process a JSON file, with a clear goal and steps to follow.
 import json
+import re
+from pathlib import Path
+
+from pydantic import (BaseModel, Field, SecretStr, ValidationError,
+                      field_serializer, field_validator, model_serializer,
+                      model_validator, validator)
 
 # Requirements
 # Fields:
@@ -31,20 +37,6 @@ import json
 # 2. process the json file
 # 3. main function
 
-from pydantic import (
-    BaseModel,
-    Field,
-    validator,
-    field_validator,
-    field_serializer,
-    model_validator,
-    model_serializer,
-    SecretStr,
-    ValidationError,
-)
-import re
-from pathlib import Path
-
 
 class Item(BaseModel):
     item_id: str
@@ -69,7 +61,6 @@ class Item(BaseModel):
 
     @field_validator("quantity")
     def validate_quantity(cls, value):
-
         if value == 0:
             print("th3e value cant be zero")
         return value

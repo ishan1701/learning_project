@@ -17,8 +17,18 @@ class Storage(ABC):
 
 
 class SSD(Storage):
-    def __init__(self, read_speed_mb: float, write_speed_mb: float, capacity: float, interface: str):
-        super().__init__(read_speed_mb=read_speed_mb, write_speed_mb=write_speed_mb, capacity=capacity)
+    def __init__(
+        self,
+        read_speed_mb: float,
+        write_speed_mb: float,
+        capacity: float,
+        interface: str,
+    ):
+        super().__init__(
+            read_speed_mb=read_speed_mb,
+            write_speed_mb=write_speed_mb,
+            capacity=capacity,
+        )
         self.interface = interface
 
     def read_data(self, file_path: str) -> None:

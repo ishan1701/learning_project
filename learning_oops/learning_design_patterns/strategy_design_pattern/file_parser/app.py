@@ -9,9 +9,8 @@
 import csv
 import json
 import xml.etree.ElementTree as ET
-from typing import List, Dict, Any
-
 from abc import ABC, abstractmethod
+from typing import Any, Dict, List
 
 
 class FileParser(ABC):
@@ -21,10 +20,9 @@ class FileParser(ABC):
 
 
 class CSVParser(FileParser):
-
     def parse_file(self, file_path: str) -> list[dict]:
         data: list[dict[str, str]] = list()
-        with open(file_path, mode='r') as f_read:
+        with open(file_path, mode="r") as f_read:
             lines = csv.DictReader(f_read)
             for row in lines:
                 for key, value in row.items():
@@ -35,18 +33,19 @@ class CSVParser(FileParser):
 class JSONParser(FileParser):
     def parse_file(self, file_path: str) -> list[dict]:
         data: list[dict[str, str]] = list()
-        with open(file_path, mode='r') as f_read:
+        with open(file_path, mode="r") as f_read:
             lines = json.load(f_read)
             for row in lines:
                 data.append(row)
         return data
 
+
 class XMLParser(FileParser):
     def parse_file(self, file_path: str) -> list[dict]:
         data: list[dict[str, str]] = list()
-        with open(file_path, mode='r') as f_read:
+        with open(file_path, mode="r") as f_read:
             tree = ET.parse(f_read)
-            root=tree.getroot()
+            root = tree.getroot()
 
             for element in root.iter():
                 if len(element.items()) > 0:
@@ -54,9 +53,9 @@ class XMLParser(FileParser):
 
         return data
 
-#context class
-class FileReader:
 
+# context class
+class FileReader:
     def __init__(self, file_parser: FileParser):
         self._parser = file_parser
 
@@ -71,6 +70,7 @@ class FileReader:
     def read_file(self, file_path: str) -> List[Dict[str, Any]]:
         return self.parser.parse_file(file_path)
 
+
 # Step 4: Test your implementation
 if __name__ == "__main__":
     # TODO: Create a file reader with a CSVParser
@@ -84,6 +84,6 @@ if __name__ == "__main__":
     data = reader.read_file("sample.json")
     print(data)
 
-    reader= XMLParser()
-    data = reader.parse_file('sample.xml')
+    reader = XMLParser()
+    data = reader.parse_file("sample.xml")
     print(data)

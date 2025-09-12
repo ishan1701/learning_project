@@ -6,15 +6,18 @@ def _is_prime(n):
             return False
     return True
 
+
 def _generate_prime_numbers():
     start = 2
-    while True:  # this is not an infinite loop and will be executed only when the next is called
+    while (
+        True
+    ):  # this is not an infinite loop and will be executed only when the next is called
         if _is_prime(start):
             yield start
-        start+=1
+        start += 1
 
 
-if __name__ == '__main__':
-    primes= _generate_prime_numbers()
+if __name__ == "__main__":
+    primes = _generate_prime_numbers()
     for i in range(500):
         print(next(primes))

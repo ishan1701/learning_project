@@ -1,6 +1,8 @@
-from learning_pytest.src.class_based_tests import Circle
-import pytest
 import math
+
+import pytest
+
+from learning_pytest.src.class_based_tests import Circle
 
 
 @pytest.fixture

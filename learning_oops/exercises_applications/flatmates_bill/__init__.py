@@ -1,2 +1,1 @@
-
-print('Welcome to the Flatmates Bill! for the init file')
+print("Welcome to the Flatmates Bill! for the init file")

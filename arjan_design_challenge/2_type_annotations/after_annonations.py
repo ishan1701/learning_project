@@ -1,7 +1,8 @@
-from typing import Callable, Generator, Any, Iterable, Union, TypeVar, Optional, Tuple
+from typing import (Any, Callable, Generator, Iterable, Optional, Tuple,
+                    TypeVar, Union)
 
-T = TypeVar('T')
-U = TypeVar('U')
+T = TypeVar("T")
+U = TypeVar("U")
 
 
 def filter_odd_numbers(numbers: Iterable[int]) -> list[int]:
@@ -13,11 +14,13 @@ def filter_odd_numbers(numbers: Iterable[int]) -> list[int]:
     return result
 
 
-def square_numbers(numbers: Union[Iterable[int] | Iterable[float]]) -> list[int | float]:
+def square_numbers(
+    numbers: Union[Iterable[int] | Iterable[float]],
+) -> list[int | float]:
     """Square numbers in a sequence."""
     result: list[int | float] = list()
     for num in numbers:
-        result.append(num ** 2)
+        result.append(num**2)
     return result
 
 
@@ -30,9 +33,10 @@ def count_chars(words: Iterable[str]) -> list[int]:
 
 
 def process_data(
-        data,
-        filter_func: Callable[[T], T] | None = None,
-        process_func: Callable[[T | U], U] | None = None):  # process_func: Union[Callable[[T | U], U], None] = None): before 3.10 version
+    data,
+    filter_func: Callable[[T], T] | None = None,
+    process_func: Callable[[T | U], U] | None = None,
+):  # process_func: Union[Callable[[T | U], U], None] = None): before 3.10 version
     """Applies filter_func and process_func on a data sequence."""
     if filter_func:
         data = filter_func(data)

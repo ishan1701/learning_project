@@ -34,15 +34,18 @@
 # code has a violation of the Liskov Substitution Principle (LSP) because Circle does not fully implement Drawable. Here's why and how to fix it.
 from abc import ABC, abstractmethod
 
+
 class Drawable(ABC):
     @abstractmethod
     def draw(self):
         pass
 
+
 class Resizable(Drawable):
     @abstractmethod
     def resize(self, factor: float):
         pass
+
 
 class Circle(Drawable):
     def __init__(self, radius: float):
@@ -50,6 +53,7 @@ class Circle(Drawable):
 
     def draw(self):
         print(f"Drawing a Circle with radius {self.radius}")
+
 
 class ResizableCircle(Resizable):
     def __init__(self, radius: float):

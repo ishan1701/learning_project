@@ -1,7 +1,7 @@
+import json
+from unittest.mock import Mock
+
 import pytest
 from click.testing import CliRunner
-from unittest.mock import Mock
-import json
 
-
-from learning_click.exercise import cli, PATH
+from learning_click.exercise import PATH, cli

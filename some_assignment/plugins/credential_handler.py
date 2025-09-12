@@ -1,7 +1,8 @@
+import logging
 from abc import ABC, abstractmethod
+
 from airflow.providers.google.common.hooks.base_google import GoogleBaseHook
 from google.oauth2 import service_account
-import logging
 from google.oauth2.service_account import Credentials
 
 
@@ -30,13 +31,15 @@ class FileBasedCredentialAuthenticator(GCPCredentialAuthenticator):
         self.credentials_file_path = credentials_file_path
 
     def get_gcp_credentials(self) -> Credentials:
-        logging.info('Reading credentials from file')
-        print('Reading credentials from file')
+        logging.info("Reading credentials from file")
+        print("Reading credentials from file")
         print(self.credentials_file_path)
         credentials = service_account.Credentials.from_service_account_file(
-            self.credentials_file_path, scopes=['https://www.googleapis.com/auth/cloud-platform'])
+            self.credentials_file_path,
+            scopes=["https://www.googleapis.com/auth/cloud-platform"],
+        )
 
-        print('Credentials are {}'.format(credentials))
+        print("Credentials are {}".format(credentials))
         return credentials
 
 
@@ -57,8 +60,7 @@ class CredentialHandler:
         return self.authenticator.get_gcp_credentials()
 
 
-
-#local testing
+# local testing
 # if __name__ == '__main__':
 #     from some_assignment.plugins.cons import PROJECT_ID
 #     from some_assignment.plugins.bigquery import run_bq_query
@@ -72,5 +74,3 @@ class CredentialHandler:
 #     for row in results:
 #         for key, value in row.items():
 #             print(key, value)
-
-

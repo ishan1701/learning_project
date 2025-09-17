@@ -6,7 +6,9 @@ from learning_oops.exercises_applications.flatmates_bill.src.bill import Bill
 class FlatMate:
     number = 0
 
-    def __init__(self, id: int, name: str, dob: date, origin: str, vacation_days: int = 0):
+    def __init__(
+        self, id: int, name: str, dob: date, origin: str, vacation_days: int = 0
+    ):
         self._id = id
         self._name = name
         self._dob = dob
@@ -49,13 +51,11 @@ class FlatMate:
 
     @classmethod
     def from_json(cls, **kwargs):
-        return cls(kwargs['id'], kwargs['name'], kwargs['dob'], kwargs['origin'])
+        return cls(kwargs["id"], kwargs["name"], kwargs["dob"], kwargs["origin"])
 
     def pay_bill(self, bill: Bill):
         pass
         # write logic to pay the bill and update the owner association
 
     def __repr__(self):
-        return f'FlatMate({self.name}, {self.age}, {self.origin})'
-
-
+        return f"FlatMate({self.name}, {self.age}, {self.origin})"

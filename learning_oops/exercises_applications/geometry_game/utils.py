@@ -1,4 +1,5 @@
 from math import sqrt
+
 from point import Point
 
 #

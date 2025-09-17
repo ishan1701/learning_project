@@ -9,8 +9,8 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
-env = os.environ.get('')
-CONFIG_BUCKET = '-'.join([os.environ.get('OPERATION_CONFIG_BUCKET'), env])
+env = os.environ.get("")
+CONFIG_BUCKET = "-".join([os.environ.get("OPERATION_CONFIG_BUCKET"), env])
 
 
 def lambda_handler(event, context):
@@ -20,7 +20,7 @@ def lambda_handler(event, context):
     # 3: create the task dag
     # 4: process the dag
 
-    op_configs = load_op_job_configs(CONFIG_BUCKET, 'config.yml', env)
+    op_configs = load_op_job_configs(CONFIG_BUCKET, "config.yml", env)
 
     for config in op_configs:
         dag = job_creator.get_creator(config.action, config).create_op_dag()
@@ -28,10 +28,8 @@ def lambda_handler(event, context):
         dag.process_task()
 
     logger.info("Lambda has finished its execution")
-    return {
-        'statusCode': 200,
-        'body': json.dumps('SUCCESS')
-    }
+    return {"statusCode": 200, "body": json.dumps("SUCCESS")}
+
 
 # Local testing purposes
 # if __name__ == '__main__':

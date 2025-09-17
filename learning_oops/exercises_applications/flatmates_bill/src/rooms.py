@@ -1,8 +1,11 @@
-from flat_mates import FlatMate
-from learning_oops.exercises_applications.flatmates_bill.src.bill import Water, Electricity
+import calendar
 from functools import reduce
 from typing import Union
-import calendar
+
+from flat_mates import FlatMate
+
+from learning_oops.exercises_applications.flatmates_bill.src.bill import (
+    Electricity, Water)
 
 
 class Room:
@@ -17,7 +20,9 @@ class Room:
     def add_room_mate(self, mate: FlatMate):
         print(f"Adding room mate {mate}")
         if self.num == self.MAX_ROOM_MATE:
-            raise ValueError(f"Room {self.num} exceeds maximum number of {self.MAX_ROOM_MATE}")
+            raise ValueError(
+                f"Room {self.num} exceeds maximum number of {self.MAX_ROOM_MATE}"
+            )
         self.rooms_mates.append(mate)
         self.num += 1
 
@@ -33,7 +38,7 @@ class Room:
 
     @property
     def rooms_status(self):
-        return f'{self.room_id} has attached br sd {self.attached_bathroom} with flatmates- {self.rooms_mates}'
+        return f"{self.room_id} has attached br sd {self.attached_bathroom} with flatmates- {self.rooms_mates}"
 
     @classmethod
     def from_json(cls, **kwargs):
@@ -44,17 +49,26 @@ class Room:
             print(f"Room {self.room_id} is empty. Hence, not splitting bill.")
             return
         if bill.is_fixed:
-            raise ValueError(f'Bill {bill.__class__.__name__} should ve variable.'
-                             f'Fixed bills needs to be calculated at the Apartment level')
+            raise ValueError(
+                f"Bill {bill.__class__.__name__} should ve variable."
+                f"Fixed bills needs to be calculated at the Apartment level"
+            )
 
-        calendar_days = calendar.monthrange(year=bill.date.year, month=bill.date.month)[1]
+        calendar_days = calendar.monthrange(year=bill.date.year, month=bill.date.month)[
+            1
+        ]
 
         total_roommate_days = int(
-            reduce(lambda x, y: (calendar_days - x.vacation_days) + (calendar_days - y.vacation_days), self.rooms_mates))
+            reduce(
+                lambda x, y: (calendar_days - x.vacation_days)
+                + (calendar_days - y.vacation_days),
+                self.rooms_mates,
+            )
+        )
 
         cost_per_day = bill.amount / total_roommate_days
         for room_mate in self.rooms_mates:
-            room_mate.bill_amount += (room_mate.vacation_days * cost_per_day)
+            room_mate.bill_amount += room_mate.vacation_days * cost_per_day
 
     def __repr__(self):
         return f"Room(room_id = {self.room_id}, attached_bathroom = {self.attached_bathroom})"

@@ -13,7 +13,7 @@ class ErrorHandler(ABC):
         self.next_handler = None
 
     @abstractmethod
-    def parse_error(self, message: ErrorMessage)->None|str:
+    def parse_error(self, message: ErrorMessage) -> None | str:
         pass
 
     def set_next_handler(self, next_handler):
@@ -27,25 +27,27 @@ class ErrorHandler(ABC):
         if self.next_handler is not None:
             return self.next_handler.handle_error(message)
 
-        return 'unhandled error'
+        return "unhandled error"
+
+
 class RetryHandler(ErrorHandler):
-    def parse_error(self, message: ErrorMessage)->str|None:
-        if message.error == 'timeout':
-            return 'retried and resolved'
+    def parse_error(self, message: ErrorMessage) -> str | None:
+        if message.error == "timeout":
+            return "retried and resolved"
         return None
 
 
 class LogHandler(ErrorHandler):
     def parse_error(self, message: ErrorMessage):
-        if message.error == 'warning':
-            return 'Logged warning'
+        if message.error == "warning":
+            return "Logged warning"
         return None
 
 
 class EscalateHandler(ErrorHandler):
     def parse_error(self, message: ErrorMessage):
-        if message.error == 'fatal':
-            return 'Escalated to support'
+        if message.error == "fatal":
+            return "Escalated to support"
         return None
 
 
@@ -55,7 +57,7 @@ def main():
         {"error": "timeout", "details": "Connection failed"},
         {"error": "warning", "details": "Low disk space"},
         {"error": "fatal", "details": "System crash"},
-        {"error": "unknown", "details": "Weird issue"}
+        {"error": "unknown", "details": "Weird issue"},
     ]
     r_handler = RetryHandler()
     e_handler = EscalateHandler()
@@ -64,12 +66,10 @@ def main():
     r_handler.set_next_handler(e_handler).set_next_handler(l_handler)
 
     for error in test_errors:
-        message = ErrorMessage(error=error['error'], detail=error['details'])
+        message = ErrorMessage(error=error["error"], detail=error["details"])
         result = r_handler.handle_error(message=message)
         print(result)
 
 
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

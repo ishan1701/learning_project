@@ -1,0 +1,20 @@
+version: '3'
+
+tasks:
+  setup-poetry:
+    desc: "Setup Python environment using Poetry (install deps from lock file)"
+    cmds:
+      - poetry install
+
+  install-pre-commit:
+    desc: "Update and sync dependencies with Poetry"
+    cmds:
+      - poetry add pre-commit
+
+  lints:
+    desc: "Run pre-commit hooks to lint the codebase"
+    cmds:
+      - poetry run isort *
+      - poetry run black --diff --check . --config pyproject.toml
+#      - poetry run ruff check . --config pyproject.toml
+

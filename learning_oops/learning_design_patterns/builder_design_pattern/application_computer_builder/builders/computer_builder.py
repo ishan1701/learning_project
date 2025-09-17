@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
-from product.computer import Computer
+
 from components.memory import RAM
-from components.storage import Storage
 from components.processing_unit import CPU
+from components.storage import Storage
+from product.computer import Computer
 
 
 class ComputerBuilder(ABC):
@@ -21,5 +22,3 @@ class ComputerBuilder(ABC):
     @abstractmethod
     def get_product(self) -> Computer:
         pass
-
-

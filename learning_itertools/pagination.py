@@ -8,9 +8,9 @@ def _generate_pages(size, data):
         end = start + size
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     page_size = 3
-    data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,12]
+    data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12]
 
     generators = _generate_pages(page_size, data)
 

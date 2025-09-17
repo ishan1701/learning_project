@@ -16,12 +16,16 @@ class Truck(Vehicle):
         return self._model
 
     def start(self):
-        return f'truck of model {self.model} is staring'
+        return f"truck of model {self.model} is staring"
 
     def stop(self):
-        return f'truck of model {self.model} is stopping'
+        return f"truck of model {self.model} is stopping"
 
     @classmethod
     def create_object(cls, max_speed: float, color: str, **kwargs):
-        return cls(max_speed=max_speed, seating_capacity=kwargs.get('seating_capacity'), model=kwargs.get('model'),
-                   color=color)
+        return cls(
+            max_speed=max_speed,
+            seating_capacity=kwargs.get("seating_capacity"),
+            model=kwargs.get("model"),
+            color=color,
+        )

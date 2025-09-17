@@ -1,12 +1,12 @@
 from abc import ABC, abstractmethod
 from typing import List
+
 import dms_operations as dms
-import s3_operations as s3
 import hudi_glue as glue
+import s3_operations as s3
 
 
 class AbstractTask(ABC):
-
     @abstractmethod
     def process_task(self):
         pass
@@ -17,7 +17,6 @@ class AbstractTask(ABC):
 
 
 class StopDmsTask(AbstractTask):
-
     def __init__(self, config):
         self._op_config = config
 
@@ -29,39 +28,40 @@ class StopDmsTask(AbstractTask):
 
 
 class DeleteRawDataTask(AbstractTask):
-
     def __init__(self, config):
         self._op_config = config
 
     def process_task(self):
-        s3.delete_s3_data(bucket=self._op_config.dms_s3_bucket,
-                          prefix=self._op_config.dms_task,
-                          schema=self._op_config.schema,
-                          tables=self._op_config.tables,
-                          archive_flag=True)
+        s3.delete_s3_data(
+            bucket=self._op_config.dms_s3_bucket,
+            prefix=self._op_config.dms_task,
+            schema=self._op_config.schema,
+            tables=self._op_config.tables,
+            archive_flag=True,
+        )
 
     def print_task(self):
         return __class__.__name__
 
 
 class DeleteProcessedDataTask(AbstractTask):
-
     def __init__(self, config):
         self._op_config = config
 
     def process_task(self):
-        s3.delete_s3_data(bucket=self._op_config.hudi_table_bucket,
-                          prefix=self._op_config.dms_task,
-                          schema=None,
-                          tables=self._op_config.tables,
-                          archive_flag=False)
+        s3.delete_s3_data(
+            bucket=self._op_config.hudi_table_bucket,
+            prefix=self._op_config.dms_task,
+            schema=None,
+            tables=self._op_config.tables,
+            archive_flag=False,
+        )
 
     def print_task(self):
         return __class__.__name__
 
 
 class StartDmsTask(AbstractTask):
-
     def __init__(self, config):
         self._op_config = config
 
@@ -73,47 +73,50 @@ class StartDmsTask(AbstractTask):
 
 
 class ReloadTableTask(AbstractTask):
-
     def __init__(self, config):
         self._op_config = config
 
     def process_task(self):
-        dms.reload_table(task_id=self._op_config.dms_task,
-                         schema=self._op_config.schema,
-                         tables=self._op_config.tables)
+        dms.reload_table(
+            task_id=self._op_config.dms_task,
+            schema=self._op_config.schema,
+            tables=self._op_config.tables,
+        )
 
     def print_task(self):
         return __class__.__name__
 
 
 class ResetGlueBookmarkTask(AbstractTask):
-
     def __init__(self, config):
         self._op_config = config
 
     def process_task(self):
-        glue.reset_glue_job_bookmark(team=self._op_config.team,
-                                     project=self._op_config.project,
-                                     platform=self._op_config.platform,
-                                     schema=self._op_config.schema,
-                                     tables=self._op_config.tables)
+        glue.reset_glue_job_bookmark(
+            team=self._op_config.team,
+            project=self._op_config.project,
+            platform=self._op_config.platform,
+            schema=self._op_config.schema,
+            tables=self._op_config.tables,
+        )
 
     def print_task(self):
         return __class__.__name__
 
 
 class RunGlueHudiTask(AbstractTask):
-
     def __init__(self, config):
         self._op_config = config
 
     def process_task(self):
-        glue.run_glue_job(team=self._op_config.team,
-                          project=self._op_config.project,
-                          platform=self._op_config.platform,
-                          schema=self._op_config.schema,
-                          tables=self._op_config.tables,
-                          config_bucket=self._op_config.hudi_config_bucket)
+        glue.run_glue_job(
+            team=self._op_config.team,
+            project=self._op_config.project,
+            platform=self._op_config.platform,
+            schema=self._op_config.schema,
+            tables=self._op_config.tables,
+            config_bucket=self._op_config.hudi_config_bucket,
+        )
 
     def print_task(self):
         return __class__.__name__
@@ -133,26 +136,26 @@ class OperationJob(AbstractTask):
         self.tasks.append(task)
 
     def print_task(self):
-        tasks_string = ''
+        tasks_string = ""
         for task in self.tasks:
-            tasks_string += task.print_task() + '->'
+            tasks_string += task.print_task() + "->"
         return tasks_string
 
 
 def get_task(op, config) -> AbstractTask:
-    if op == 'stop_dms_task':
+    if op == "stop_dms_task":
         return StopDmsTask(config)
-    elif op == 'delete_raw_data':
+    elif op == "delete_raw_data":
         return DeleteRawDataTask(config)
-    elif op == 'delete_processed_data':
+    elif op == "delete_processed_data":
         return DeleteProcessedDataTask(config)
-    elif op == 'reset_job_bookmark':
+    elif op == "reset_job_bookmark":
         return ResetGlueBookmarkTask(config)
-    elif op == 'start_dms_task':
+    elif op == "start_dms_task":
         return StartDmsTask(config)
-    elif op == 'reload_table':
+    elif op == "reload_table":
         return ReloadTableTask(config)
-    elif op == 'run_glue_job':
+    elif op == "run_glue_job":
         return RunGlueHudiTask(config)
     else:
-        raise Exception(f'Wrong operation found -{op}')
+        raise Exception(f"Wrong operation found -{op}")

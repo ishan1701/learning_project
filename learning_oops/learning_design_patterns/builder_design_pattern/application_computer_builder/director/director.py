@@ -1,7 +1,8 @@
+from abc import ABC, abstractmethod
+
 from builders.computer_builder import ComputerBuilder
 from components.keyboard import Keyboard
 from product.computer import Computer
-from abc import ABC, abstractmethod
 
 
 class Director(ABC):
@@ -24,9 +25,13 @@ class Director(ABC):
 
 class GameBuilderDirector(Director):
     def build_computer(self, **kwargs) -> Computer:
-        (self.builder.assemble_keyboard(keyboard=kwargs['keyboard'])
-         .assemble_memory(memory=kwargs['memory'])
-         .assemble_storage(storage=kwargs['storage'])
-         .assemble_graphics_card_memory(graphics_card_memory=kwargs['graphics_card_memory']))
+        (
+            self.builder.assemble_keyboard(keyboard=kwargs["keyboard"])
+            .assemble_memory(memory=kwargs["memory"])
+            .assemble_storage(storage=kwargs["storage"])
+            .assemble_graphics_card_memory(
+                graphics_card_memory=kwargs["graphics_card_memory"]
+            )
+        )
 
         return self.builder.get_product()

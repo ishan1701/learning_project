@@ -2,11 +2,12 @@
 # Hence, it will violate the open close principle. Lets make the chage
 from abc import ABC, abstractmethod
 
+
 class Order:
     items = []
     quantities = []
     prices = []
-    status = 'open'
+    status = "open"
 
     def add_item(self, name, quantity, price):
         self.items.append(name)
@@ -20,47 +21,51 @@ class Order:
 
         return total
 
+
 class Payment(ABC):
     @abstractmethod
     def pay(self, security_code):
         pass
 
+
 class DebitPayment(Payment):
     def __init__(self):
-        self.type='debit'
+        self.type = "debit"
 
     def pay(self, security_code):
-        print(f'payment type is {self.type}')
-        print(f'Verifying security code: {security_code}')
+        print(f"payment type is {self.type}")
+        print(f"Verifying security code: {security_code}")
 
 
 class CreditPayment(Payment):
     def __init__(self):
-        self.type = 'credit'
+        self.type = "credit"
 
     def pay(self, security_code):
-        print(f'payment type is {self.type}')
-        print(f'Verifying security code: {security_code}')
+        print(f"payment type is {self.type}")
+        print(f"Verifying security code: {security_code}")
+
 
 # Here I am adding a new payment type. But PayPal works with email address
 # and not the security code
 
+
 class PaypalPayment(Payment):
     def __init__(self):
-        self.type = 'paypal'
+        self.type = "paypal"
 
     def pay(self, email_address):
-        print(f'payment type is {self.type}')
-        print(f'Verifying email address code: {email_address}')
+        print(f"payment type is {self.type}")
+        print(f"Verifying email address code: {email_address}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     order = Order()
-    order.add_item('A', 10, 100)
-    order.add_item('B', 10, 100)
-    order.add_item('C', 10, 100)
+    order.add_item("A", 10, 100)
+    order.add_item("B", 10, 100)
+    order.add_item("C", 10, 100)
 
     print(order.total_price())
 
     paypal_payment = PaypalPayment()
-    paypal_payment.pay(email_address='some@abc')
-
+    paypal_payment.pay(email_address="some@abc")

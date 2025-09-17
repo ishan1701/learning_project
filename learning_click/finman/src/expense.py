@@ -1,5 +1,6 @@
-import click
 from datetime import datetime
+
+import click
 from helpers.file_handlers import write_json_file
 
 

@@ -1,9 +1,10 @@
 from pathlib import Path
-from typing import Generator
-from context import Context
 from random import randint
-from text_formatter import TextFormatterTypeMap, TextFormatter
+from typing import Generator
+
+from context import Context
 from formatter_factory import TextFormatterStrategyFactory
+from text_formatter import TextFormatter, TextFormatterTypeMap
 
 
 def _read_file(file: Path) -> Generator[str, None, None]:
@@ -22,22 +23,25 @@ def _random_text_type() -> TextFormatterTypeMap:
         return TextFormatterTypeMap.LOWER
 
 
-
-if __name__ == '__main__':
-    file_name = 'sample.txt'
-    file_path = Path(__file__).parent.parent.joinpath('data', file_name)
+if __name__ == "__main__":
+    file_name = "sample.txt"
+    file_path = Path(__file__).parent.parent.joinpath("data", file_name)
     contents = _read_file(file_path)
 
-    with open(Path(__file__).parent.parent.joinpath('data', 'output.txt'), 'w+') as f_write:
+    with open(
+        Path(__file__).parent.parent.joinpath("data", "output.txt"), "w+"
+    ) as f_write:
         for content in contents:
             output_line: str = str()
             format_type = _random_text_type()
-            text_formatter = TextFormatterStrategyFactory.formatter(formatter_type=format_type)
+            text_formatter = TextFormatterStrategyFactory.formatter(
+                formatter_type=format_type
+            )
             context = Context(formatter=text_formatter)
-            words = content.split(' ')
+            words = content.split(" ")
             for word in words:
-                output_line += ' '.join(context.run_formatter(text=word))
+                output_line += " ".join(context.run_formatter(text=word))
 
             f_write.write(output_line)
 
-            f_write.write('\n')
+            f_write.write("\n")

@@ -1,5 +1,9 @@
-from text_formatter import TextFormatter, TextFormatterTypeMap, TitleTextFormatter, UpperTextFormatter, LowerTextFormatter
 from enum import Enum
+
+from text_formatter import (LowerTextFormatter, TextFormatter,
+                            TextFormatterTypeMap, TitleTextFormatter,
+                            UpperTextFormatter)
+
 
 class TextFormatterStrategyFactory:
     @staticmethod
@@ -11,4 +15,4 @@ class TextFormatterStrategyFactory:
         if formatter_type == TextFormatterTypeMap.LOWER:
             return LowerTextFormatter()
         else:
-            raise NotImplementedError(f'Type is not implemented: {formatter_type}')
+            raise NotImplementedError(f"Type is not implemented: {formatter_type}")

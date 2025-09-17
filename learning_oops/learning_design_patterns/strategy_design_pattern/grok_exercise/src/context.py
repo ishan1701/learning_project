@@ -17,4 +17,3 @@ class Context:
 
     def run_formatter(self, text: str):
         return self.formatter.format(text=text)
-

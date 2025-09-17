@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 
 # Step 1: Create the DiscountStrategy interface
 class DiscountStrategy(ABC):
-
     @abstractmethod
     def apply_discount(self, total: float) -> float:
         pass
@@ -12,9 +11,10 @@ class DiscountStrategy(ABC):
 # Step 2: Implement the discount strategies
 # TODO: Implement NoDiscount, PercentageDiscount, and FixedAmountDiscount classes
 
+
 class NoDiscount(DiscountStrategy):
     def apply_discount(self, total: float) -> float:
-        print('No discount applied')
+        print("No discount applied")
         return total
 
 
@@ -23,7 +23,7 @@ class PercentageDiscount(DiscountStrategy):
         self.percentage = percentage
 
     def apply_discount(self, total: float) -> float:
-        print('Percentage discount applied')
+        print("Percentage discount applied")
         return total - (total * self.percentage / 100)
 
 
@@ -32,13 +32,12 @@ class FixedAmountDiscount(DiscountStrategy):
         self.amount = amount
 
     def apply_discount(self, total: float) -> float:
-        print('Fixed amount discount applied')
+        print("Fixed amount discount applied")
         return total - self.amount
 
 
 # Step 3: Implement the ShoppingCart class.. This is the context
 class ShoppingCart:
-
     def __init__(self, discount_strategy: DiscountStrategy):
         self._discount_strategy = discount_strategy
         self.items: dict[str:float] = dict()
@@ -53,7 +52,7 @@ class ShoppingCart:
 
     def add_item(self, item: str, price: float):
         if item in self.items:
-            print('Item already added')
+            print("Item already added")
             return
         else:
             self.items[item] = price
@@ -62,7 +61,7 @@ class ShoppingCart:
 
     def remove_item(self, item: str):
         if item not in self.items:
-            print('Item not found')
+            print("Item not found")
             return
         else:
             del self.items[item]
@@ -70,16 +69,14 @@ class ShoppingCart:
     # TODO: Remove the item from the items dictionary if it exists
 
     def get_total(self) -> float:
-        total:float = 0
+        total: float = 0
         for item, value in self.items.items():
             total += value
 
         return total
 
-
     def get_total_after_discount(self) -> float:
         return self.discount_strategy.apply_discount(self.get_total())
-
 
 
 # TODO: Calculate and return the total price of the items in the cart after applying the discount

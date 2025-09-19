@@ -53,7 +53,16 @@ This keyword is used to declare a function as subroutine
 ### await
 This keyword is used to wait the subroutine to complete. 
 Note that to await should be used with async defined.
+This keyword is used to pause the execution of the subroutine until the awaited task is completed.
+So this will pause the main subroutine until the awaited task is completed.
 
+### **Behavior**
+
+1. When Python encounters await some_task():
+2. The coroutine yields control to the event loop.
+3. The event loop can switch to other tasks while waiting.
+4. Once some_task() finishes, execution resumes right after the await.
+5. **If all tasks are independent, you shouldn’t await the long task first in a sequential way — that blocks other tasks.**
 ```aiignore
     async def run_task_c(sleep_time: int) -> str:
     start_time = datetime.now()
@@ -65,8 +74,9 @@ Note that to await should be used with async defined.
 ```
 it will also be used in the event loop function
 a_return = await a
-### create_task()
-it is used to summit a task to eventloop
+### create_task()  This is very important
+it is used to summit a task to eventloop.
+create_task puts the coroutine in the event loop and starts executing it.
 
 ### gather()
 This is one line statement to put tasks to event loop

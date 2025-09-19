@@ -8,7 +8,7 @@ a = list()
 async def download_task():
     print("Downloading...")
     a.append(("download", str(datetime.datetime.now())))
-    await asyncio.sleep(50)
+    await asyncio.sleep(20)
     a.append(("download after sleep", str(datetime.datetime.now())))
 
 
@@ -31,15 +31,22 @@ def normal():
 
 
 async def main():
+
+    ##the below os the correct way to do it. create_task puts the coroutine in the event loop and starts executing it.
     download_task = asyncio.create_task(download_file())
     log_task = asyncio.create_task(log_activity())
+
+    ## this is wrong way to do it.
+    # download_task =download_file()
+    # log_task = log_activity()
 
     await log_task
     normal()
 
-    await download_task
+    await  download_task
 
     print("Done after the download task is complete.")
+    print(a)
 
 
 # 1. The download_task will be put in the event loop and will start executing.

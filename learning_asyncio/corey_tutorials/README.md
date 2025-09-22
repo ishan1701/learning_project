@@ -54,9 +54,29 @@ In the second case, the await will put the subroutine in the event loop only whe
 ![img_1.png](img_1.png)
 
 now even though the task1 is completed first, the main will wait for task2 to complete before resuming.
+
+
+🎯 Quick cheat sheet
+
+One task, run to completion → await coro
+
+Start and forget (background) → create_task
+
+Many tasks, need all results → gather
+
+Many tasks, handle as they finish → as_completed
+
+Many tasks, custom completion logic → wait
+
+
+
+## Taskgroup in Python 3.11
+
+
 ## class based implementations
 ```angular2html
 import asyncio
+
 
 class MyAwaitable:
     def __init__(self, delay, value):

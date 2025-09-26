@@ -8,7 +8,7 @@ a = list()
 async def download_task():
     print("Downloading...")
     a.append(("download", str(datetime.datetime.now())))
-    await asyncio.sleep(10)
+    await asyncio.sleep(20)
     a.append(("download after sleep", str(datetime.datetime.now())))
 
 
@@ -31,16 +31,46 @@ def normal():
 
 
 async def main():
+
+    ##the below os the correct way to do it. create_task puts the coroutine in the event loop and starts executing it.
     download_task = asyncio.create_task(download_file())
     log_task = asyncio.create_task(log_activity())
+
+    ## this is wrong way to do it.
+    # download_task =download_file()
+    # log_task = log_activity()
 
     await log_task
     normal()
 
-    await download_task
+    await  download_task
 
+    print("Done after the download task is complete.")
+    print(a)
+
+
+# 1. The download_task will be put in the event loop and will start executing.
+# 2. The log_activity will also be put in the event loop and will start executing
+# 3. The normal() function will be waited until the log_activity is done.
+# 4. Now the download_task may have been completed or not.
+# 5. if the download_task is not completed, the next print statement will wait until it is completed.
+
+# Below is the expected output:
+# (learning-project-py3.10) ➜  learning_asyncio git:(main) ✗ poetry run  python example.py
+# Downloading...
+# Logging...
+# Normal-0.
+# Normal-1.
+# Normal-2.
+# Normal-3.
+# Normal-4.
+# Normal-5.
+# Normal-6.
+# Normal-7.
+# Normal-8.
+# Normal-9.
+# Downloading completed
+# Done after the download task is complete.
 
 if __name__ == "__main__":
     asyncio.run(main())
-    for i in a:
-        print(i)

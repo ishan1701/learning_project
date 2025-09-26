@@ -1,6 +1,5 @@
 **This is a learning project **
 
-CHATGPT response
 
 1. Core Python Modules for File and System Operations
 These modules are foundational for handling files, processes, and system-level tasks:

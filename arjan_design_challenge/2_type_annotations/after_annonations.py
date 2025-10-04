@@ -32,6 +32,7 @@ def count_chars(words: Iterable[str]) -> list[int]:
     return result
 
 
+
 def process_data(
     data,
     filter_func: Callable[[T], T] | None = None,

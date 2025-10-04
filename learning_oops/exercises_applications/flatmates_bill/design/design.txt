@@ -1,17 +1,33 @@
-In this app, there are multiple flatmates which are residing in aa
-apartment. New members can join the apartment.But the max of people per room
+appname: bill Splitter
+
+apt -> rooms -> flatmates
+
+In this app, there are multiple flatmates which are residing in an
+apartment. New members can join the apartment. But the max of people per room
 residing in a rooms cant increased by 2. Apartment has fixed bills
+
 1. Rent
 2. Cleaning
+
+consumption bills
 3. electricity
+4. water
 
 Now if a person is on vacation then the running bills like elect
 will not be added for the days a person is out.
 
 
-a json file with apartment config
-a big json file with flatmates entries
 
-a big file for bill details of a year
+whatever you see a noun, it will be declared as a class.
 
-a big file of flatmates vacation
+
+outcome:
+1. split the bills among the flatmates inside an apartment
+
+
+so by the end of this app, I should have a report which tells me how a person needs to pay at the end of the month.
+
+
+
+
+

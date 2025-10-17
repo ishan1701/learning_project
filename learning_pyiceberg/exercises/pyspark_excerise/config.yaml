@@ -18,4 +18,5 @@ open_table_format:
         "spark.sql.catalog.nessie.s3.region": "us-east-1"
         "spark.sql.catalog.nessie.s3.access-key-id": ""
         "spark.sql.catalog.nessie.s3.secret-access-key": ""
+        
 

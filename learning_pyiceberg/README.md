@@ -118,8 +118,53 @@ when a record is added to the table, below things happen
 3. The manifest list is updated with the new manifest file and old manifest files
 4. A new metadata file is crated with the new manifest list and old manifest lists
 
+## schema evolution in iceberg
+1. Iceberg doesnt rely on the column positions or column names to identify the columns.
+2. When a table is created, each column is assigned a unique id.
+3. Now every schema change creates a new version of schema. 
+4. The underlying data files are not changed.
+
+# Adding a column
+1. Its a non breaking change
+2. A new column is added to the schema with a new id
+3. A new snapshot is created with the new schema
+4. Old files which doent have the column will have null values for the new column
+
+# Removing a column
+1. The column is marked as deleted in the snapshot
+2. The underlying data files are not changed
+3. Old files still contains the column data.
+4. order files column will be not be return while reading the data
+5. time travel to the old snapshot will return the column data
+6. As the data files still has the column data, "iceberg's rewrite data files" operation can be run to remove the column data from the data files
+
+# Renaming a column
+1. Its a non breaking change
+2. The column is renamed in the schema. the id will not change
+3. A new snapshot is created with the new column name
+
+# changing column type
+1. Some types like int-->float or float--> double are non breaking changes. The rewrite of data files is not required
+2. Some types like int-->string or string--> int are breaking changes. The rewrite of data files is required
+
+The best way to accomplish this is 
+1. to add a new column with the new type,
+2. copy the data from the old column to the new column and 
+3. then remove the old column
+
+
+### Nested types (structs, lists, maps)
+
+1. Iceberg supports evolution inside nested fields — nested fields have their own field IDs.
+2. We can add/rename/drop fields inside a struct safely (IDs apply to nested fields).
+
+
+## time travel in iceberg
+
+## partition evolution in iceberg
+
 ## Iceberg on AWS
 
 ## Iceberg with Spark
-
+one tutorial - https://www.youtube.com/watch?v=r30bi697eHA&list=PLsLAVBjQJO0p0Yq1fLkoHvt2lEJj5pcYe&index=6
 ## Iceberg with pyiceberg lib in python

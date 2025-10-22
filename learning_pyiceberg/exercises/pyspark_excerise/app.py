@@ -1,14 +1,8 @@
-# to do
-# 1. create spark session and connect to nessie
-# 2. create a simple json and read it as dataframe
-# 3. check if iceberg table is existing
-# 4. First create a table based on the schema provided
-# 5. Pyspark should not create the table. Its only insert the dataclasses
-
-
-from pyspark.sql import DataFrame
-from utils import get_pyspark_session, load_yaml
 from pathlib import Path
+
+from pyspark.sql import DataFrame, SparkSession
+from utils import get_pyspark_session, load_yaml
+import os
 
 CONFIG_PATH = "config.yaml"
 APP_NAME = "pyspark_app"
@@ -17,32 +11,32 @@ SAMPLE_JSON_DATA = "sample_data.json"
 NEW_NAMESPACE = "demo_namespace"
 
 
-def main(config: dict):
-    spark = get_pyspark_session(config=config, app_name=APP_NAME, open_table_format=OPEN_TABLE_FORMAT)
-    data_file = str(Path(__file__).parent.parent.joinpath("data", SAMPLE_JSON_DATA))
-    print(f"Loading data from {data_file}")
-
-
-    df = spark.read.format("json").load(data_file)
-    df.printSchema()
-
+def _exercise_1_basic_iceberg(spark: SparkSession):
     # list all the namespaes in the catalog
+    spark.sql("show namespaces in nessie").show(truncate=False)
 
-
-    # List existing catalogs and branches in Nessie.
+    # List existing catalogs
     spark.sql("show catalogs").show(truncate=False)
-    #
-    # spark.sql("show databases").show(truncate=False)
-    #
-    spark.sql("show namespaces").show(truncate=False)
 
-    # spark.sql("show tables").show(truncate=False)
+    # list all databases
+    spark.sql("show databases in nessie").show(truncate=False)
 
-    spark.sql("create namespace if not exists nessie.demo_namespace").show(truncate=False)
+    # # list branches in nessie
+    # spark.sql("list branches in nessie").show(truncate=False)
 
-    spark.sql("show namespaces").show(truncate=False)
+    spark.sql("create namespace if not exists nessie.demo_namespace").show(
+        truncate=False
+    )
 
-    spark.sql("create table if not exists nessie.demo_namespace.demo_table (id int, name string, age int) using iceberg").show(truncate=False)
+    spark.sql("show namespaces in nessie").show(truncate=False)
+
+    spark.sql("create database if not exists nessie.demo_db")
+
+    spark.sql("show databases in nessie").show(truncate=False)
+
+    spark.sql(
+        "create table if not exists nessie.demo_namespace.employee (id int, name string, age int, profession string, city string) using iceberg"
+    ).show(truncate=False)
 
     spark.sql("show catalogs").show(truncate=False)
 
@@ -50,10 +44,44 @@ def main(config: dict):
     spark.sql("show tables in nessie.demo_namespace").show(truncate=False)
 
 
+def _exercise_2_iceberg_operations():
+    nessie_url = os.getenv("NESIE_URL")
+    print(f"NESIE URL: {nessie_url}")
+
+    # client = NessieClient(nessie_url)
+    # print(client)
+    #
+    # print(client.get_base_url())
 
 
 
-if __name__ == '__main__':
+def _exercise_3_transformations(spark: SparkSession):
+    pass
+
+
+def _exercise_4_schema_evolution(spark: SparkSession):
+    pass
+
+
+def _exercise_5_time_travel(spark: SparkSession):
+    pass
+
+
+def main(config: dict):
+    # spark = get_pyspark_session(
+    #     config=config, app_name=APP_NAME, open_table_format=OPEN_TABLE_FORMAT
+    # )
+
+    # _exercise_1_basic_iceberg(spark=spark)
+    _exercise_2_iceberg_operations()
+
+if __name__ == "__main__":
+
+    import attr
+    print(attr.__version__)
     config = load_yaml(file_path=CONFIG_PATH)
-
-main(config=config)
+    main(config=config)
+    os.getenv("AWS_ACCESS_KEY_ID")
+    os.getenv("AWS_SECRET_ACCESS_KEY")
+    os.getenv("AWS_EC2_METADATA_DISABLED")
+    os.getenv("AWS_REGION")

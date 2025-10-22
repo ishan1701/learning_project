@@ -65,6 +65,7 @@ click = "^8.2.0"
 pre-commit = "^4.3.0"
 black = "^25.1.0"
 loguru = "^0.7.0"
+pynessie = "^0.67.0"
 
 [build-system]
 requires = ["poetry-core"]

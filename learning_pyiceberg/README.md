@@ -168,3 +168,6 @@ The best way to accomplish this is
 ## Iceberg with Spark
 one tutorial - https://www.youtube.com/watch?v=r30bi697eHA&list=PLsLAVBjQJO0p0Yq1fLkoHvt2lEJj5pcYe&index=6
 ## Iceberg with pyiceberg lib in python
+
+
+**In Apache Iceberg (and Nessie), a namespace is conceptually the same thing as a database in Spark or traditional SQL systems.**

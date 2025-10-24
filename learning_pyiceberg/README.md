@@ -159,9 +159,43 @@ The best way to accomplish this is
 2. We can add/rename/drop fields inside a struct safely (IDs apply to nested fields).
 
 
+## partitioning in iceberg
+
+### normal partitioning 
+
+
+### hidden partitioning
+In hidden partitioning, the data is not physically partitioned into folders based on the partition columns. The partitioning is handled logically by the iceberg metadata. so no seperate folders are created for each partition value.
+The manifest file contains the row counts, column min and max values stats **BUT MOST IMPORTANT and also the partition values for each data file.**
+so with the below query
+
+`SELECT * FROM sales_iceberg WHERE order_date = '2025-10-23';`
+
+1. Iceberg uses partition metadata to skip reading irrelevant files (partition pruning).
+2. No directory scanning. No need for MSCK REPAIR TABLE.
+3. It’s fast and reliable.
+
 ## time travel in iceberg
 
 ## partition evolution in iceberg
+so in case of iceberg the data is not physically partitioned into folders based on the partition columns. For example in case of hive if we partition a table on country column, the data will be physically stored in folders like country=US, country=UK etc.
+if the data is residing in the s3 bucket, the data will be stored in the s3 bucket in the folders country=US, country=UK etc. example s3://my-bucket/employee/country=US/part-0001.parquet
+
+### what are the problems with this approach
+1. we can change the partitioning columns only during the table creation.
+2. if we want to change the partitioning columns, we need to recreate the table and reload the data.
+3. if we have multiple partitioning columns, the number of folders will increase exponentially leading to small files problem.
+4. if the partitioning column has high cardinality, it will lead to too many folders
+
+### how iceberg handles partition evolution
+1. In case of iceberg, the data is not physically partitioned into folders based on the partition columns.
+2. The partitioning is handled logically by the iceberg metadata. so no seperate folders are created for each partition value.
+3. This is some what similar to hidden partitioning.
+4. Now a person can change the partition strategy at any point of time without affecting the existing data.
+5. When a new partition strategy is applied, the new data files will be created based on the new partition strategy.
+6. The old data files will still have the old partition strategy.
+
+This is termed as partition evolution.
 
 ## Iceberg on AWS
 
@@ -169,5 +203,15 @@ The best way to accomplish this is
 one tutorial - https://www.youtube.com/watch?v=r30bi697eHA&list=PLsLAVBjQJO0p0Yq1fLkoHvt2lEJj5pcYe&index=6
 ## Iceberg with pyiceberg lib in python
 
+## workshop
+https://github.com/developer-advocacy-dremio/apache-iceberg-lakehouse-workshop/blob/main/workshop.md
 
 **In Apache Iceberg (and Nessie), a namespace is conceptually the same thing as a database in Spark or traditional SQL systems.**
+
+
+
+## difference between df.writeTo and df.write.format("iceberg").save()
+
+1. Why writeTo is Preferred for Iceberg
+2. in the `df.writeTo("nessie.demo_namespace.employee_partitioned_1").append()` if the table is not exists, it will throw an error.
+   So we need to create the table first using the `createTable` method.

@@ -197,7 +197,7 @@ if the data is residing in the s3 bucket, the data will be stored in the s3 buck
 
 This is termed as partition evolution.
 
-## Iceberg on AWS
+
 
 ## Iceberg with Spark
 one tutorial - https://www.youtube.com/watch?v=r30bi697eHA&list=PLsLAVBjQJO0p0Yq1fLkoHvt2lEJj5pcYe&index=6
@@ -215,3 +215,28 @@ https://github.com/developer-advocacy-dremio/apache-iceberg-lakehouse-workshop/b
 1. Why writeTo is Preferred for Iceberg
 2. in the `df.writeTo("nessie.demo_namespace.employee_partitioned_1").append()` if the table is not exists, it will throw an error.
    So we need to create the table first using the `createTable` method.
+
+
+## Iceberg on AWS, There are two ways of creating the iceberg table in aws 
+1. S3Tables
+2. General purpose S3 tables
+
+
+## s3Tables
+
+### Iceberg optimization.
+
+There are automatic as well as manual compactions present in the aws.
+
+#### Automatic Compaction, 
+1. When file count or size thresholds are met, S3 Tables triggers a managed background process to perform compaction.
+2. Now what is the file count or size threshold
+3. There are 3 different types of compaction algorithm for s3Tables.
+   a. bin pack
+   b. sort compactions - ideal for analytical workflows
+   c. z -order - good complex which had multi-dimension data like geo data
+4. Now the compactions can be happen both for the metadata and data files
+   a. Metadata compactions
+   b. Data file compactions
+5. compactions works at partition level- what does this statement actually means?
+6. table can be partition by multiple columns

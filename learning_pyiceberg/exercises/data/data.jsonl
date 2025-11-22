@@ -1,0 +1,5 @@
+{"transaction_id": "T1001", "product_id": "P100", "category": "Electronics", "transaction_date": "2025-11-10", "amount": 999.98, "customer": {"customer_id": "C101", "loyalty_tier": "Gold"}}
+{"transaction_id": "T1002", "product_id": "P200", "category": "Grocery", "transaction_date": "2025-11-10", "amount": 17.45, "customer": {"customer_id": "C102", "loyalty_tier": "Silver"}}
+{"transaction_id": "T1003", "product_id": "P300", "category": "Clothing", "transaction_date": "2025-11-11", "amount": 89.97, "customer": {"customer_id": "C103", "loyalty_tier": "Platinum"}}
+{"transaction_id": "T1004", "product_id": "P400", "category": "Electronics", "transaction_date": "2025-11-11", "amount": 899.00, "customer": {"customer_id": "C104", "loyalty_tier": "Gold"}}
+{"transaction_id": "T1005", "product_id": "P500", "category": "Grocery", "transaction_date": "2025-11-12", "amount": 29.90, "customer": {"customer_id": "C105", "loyalty_tier": "Bronze"}}

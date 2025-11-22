@@ -91,3 +91,25 @@ The above picture depicts the workflow on how the query result will be returned 
 ## Provide access to LF-Tag permissions under LF-Tags and Privileges tab
 
 ##  s3Backed table
+
+
+
+
+## Here is one more POC 
+Below are the steps:
+
+1. Create S3 tables backed by Apache Iceberg.
+2. Set up three AWS Glue jobs, each using a different IAM role:
+3. One for an analyst in the US,
+4. One for an analyst in the EU, and
+5. One for a developer.
+6. Create LF tags such as public and private, and attach the appropriate tags to the roles. For example, assign the public tag to the developer role.
+7. My table includes a column named country. I want to enforce row-level security so that:
+8. The US analyst can only see data for the US, and
+9. The EU analyst can only see data for the EU.
+10. Create Athena workgroups and user groups to control access to the data in the table.
+11. Integrate AWS SSO
+12. users with Lake Formation to include single sign-on access control in the POC. (I’m not yet sure how to do this part.)
+
+
+# 

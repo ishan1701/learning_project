@@ -240,3 +240,12 @@ There are automatic as well as manual compactions present in the aws.
    b. Data file compactions
 5. compactions works at partition level- what does this statement actually means?
 6. table can be partition by multiple columns
+
+
+
+# Some resources on optimizations in iceberg in aws
+https://www.youtube.com/watch?v=xOXE7AS-pNA&t=8s
+
+
+
+

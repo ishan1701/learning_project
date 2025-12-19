@@ -248,4 +248,19 @@ https://www.youtube.com/watch?v=xOXE7AS-pNA&t=8s
 
 
 
+### iceberg v3 format in aws
+1. what is row lineage?
+2. what is deletion vectors?
+
+
+
+
+![img_3.png](img_3.png) 
+
+
+
+![img_4.png](img_4.png)
+
+
+
 
